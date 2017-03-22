@@ -17,6 +17,9 @@ class ViewController: UIViewController {
 	@IBOutlet weak var lblInfo: UILabel!
 	
 	//Core Location Params
+	var locationManager = CLLocationManager()
+ 
+	var didFindMyLocation = false
 	
 	
 	override func viewDidLoad() {
@@ -24,6 +27,11 @@ class ViewController: UIViewController {
 		// Do any additional setup after loading the view, typically from a nib.
 		let camera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude: 48.857165, longitude: 2.354613, zoom: 8.0)
 		viewMap.camera = camera
+		
+		locationManager.delegate = self
+		locationManager.requestWhenInUseAuthorization()
+		
+		viewMap.addObserver(self, forKeyPath: "myLocation", options: NSKeyValueObservingOptions.new, context: nil)
 	}
 	
 	override func didReceiveMemoryWarning() {
@@ -31,6 +39,16 @@ class ViewController: UIViewController {
 		// Dispose of any resources that can be recreated.
 	}
 	
+	override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+		if !didFindMyLocation {
+			let myLocation: CLLocation = change![NSKeyValueChangeKey.newKey] as! CLLocation
+			viewMap.camera = GMSCameraPosition.camera(withTarget: myLocation.coordinate, zoom: 10.0)
+			viewMap.settings.myLocationButton = true
+			
+			didFindMyLocation = true
+		}
+	}
+
 	
 	// MARK: IBAction method implementation
 	
@@ -79,4 +97,23 @@ class ViewController: UIViewController {
 
 
 }
+
+//MARK:- Location Manager Delegate
+
+extension ViewController:CLLocationManagerDelegate{
+	
+	func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+		if status == CLAuthorizationStatus.authorizedWhenInUse {
+			viewMap.isMyLocationEnabled = true
+		}
+	}
+	
+}
+
+
+
+
+
+
+
 
