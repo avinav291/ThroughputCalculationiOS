@@ -32,7 +32,7 @@
 		2E2959E61E82F5600083141A /* GoogleMapsCore.framework in Resources */ = {isa = PBXBuildFile; fileRef = 2E2959C71E82F3B30083141A /* GoogleMapsCore.framework */; };
 		2E2959E71E82F5600083141A /* GoogleMaps.framework in Resources */ = {isa = PBXBuildFile; fileRef = 2E2959C51E82F3A60083141A /* GoogleMaps.framework */; };
 		2E2959E81E82F5600083141A /* GoogleMapsBase.framework in Resources */ = {isa = PBXBuildFile; fileRef = 2E2959C11E82F3740083141A /* GoogleMapsBase.framework */; };
-		2E2959ED1E82FEAE0083141A /* MapTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2959EC1E82FEAE0083141A /* MapTasks.swift */; };
+		2E2959EF1E82FF440083141A /* MapTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2959EE1E82FF440083141A /* MapTasks.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,7 +61,7 @@
 		2E2959E21E82F4F90083141A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		2E2959E41E82F4FD0083141A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2E2959E91E82F6320083141A /* Throughput Calculation-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Throughput Calculation-Bridging-Header.h"; sourceTree = "<group>"; };
-		2E2959EC1E82FEAE0083141A /* MapTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTasks.swift; sourceTree = "<group>"; };
+		2E2959EE1E82FF440083141A /* MapTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTasks.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,13 +113,13 @@
 		2E2959AD1E82F0BC0083141A /* Throughput Calculation */ = {
 			isa = PBXGroup;
 			children = (
+				2E2959EE1E82FF440083141A /* MapTasks.swift */,
 				2E2959AE1E82F0BC0083141A /* AppDelegate.swift */,
 				2E2959B01E82F0BC0083141A /* ViewController.swift */,
 				2E2959B21E82F0BD0083141A /* Main.storyboard */,
 				2E2959B51E82F0BD0083141A /* Assets.xcassets */,
 				2E2959B71E82F0BD0083141A /* LaunchScreen.storyboard */,
 				2E2959BA1E82F0BD0083141A /* Info.plist */,
-				2E2959EC1E82FEAE0083141A /* MapTasks.swift */,
 			);
 			path = "Throughput Calculation";
 			sourceTree = "<group>";
@@ -233,7 +233,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E2959ED1E82FEAE0083141A /* MapTasks.swift in Sources */,
+				2E2959EF1E82FF440083141A /* MapTasks.swift in Sources */,
 				2E2959B11E82F0BC0083141A /* ViewController.swift in Sources */,
 				2E2959AF1E82F0BC0083141A /* AppDelegate.swift in Sources */,
 			);
