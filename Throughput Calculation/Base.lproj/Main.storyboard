@@ -26,25 +26,25 @@
                                 <items>
                                     <barButtonItem image="location" id="uwx-zl-HGE">
                                         <connections>
-                                            <action selector="findAddress:" destination="NmS-cG-9dJ" id="Sdd-AP-yQe"/>
+                                            <action selector="findAddressWithSender:" destination="NmS-cG-9dJ" id="JZ7-55-elJ"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="wC9-o4-sFQ"/>
                                     <barButtonItem image="directions" id="ncW-x1-FFC">
                                         <connections>
-                                            <action selector="createRoute:" destination="NmS-cG-9dJ" id="SP5-CP-0wm"/>
+                                            <action selector="createRouteWithSender:" destination="NmS-cG-9dJ" id="FMI-kV-zSm"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem width="25" style="plain" systemItem="fixedSpace" id="dAW-hY-rbE"/>
                                     <barButtonItem image="steering_wheel" id="c4F-lo-T9t">
                                         <connections>
-                                            <action selector="changeTravelMode:" destination="NmS-cG-9dJ" id="jY8-SJ-HH2"/>
+                                            <action selector="changeTravelModeWithSender:" destination="NmS-cG-9dJ" id="t9V-QB-sZw"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="bDF-dh-VtE"/>
                                     <barButtonItem image="map" id="i3Z-28-dEb">
                                         <connections>
-                                            <action selector="changeMapType:" destination="NmS-cG-9dJ" id="XvM-jE-7LB"/>
+                                            <action selector="changeMapTypeWithSender:" destination="NmS-cG-9dJ" id="FIY-7t-sL3"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
