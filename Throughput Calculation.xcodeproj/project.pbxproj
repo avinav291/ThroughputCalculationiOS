@@ -7,10 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E2817291E844BCD00069BCA /* QueueDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2817281E844BCD00069BCA /* QueueDisplayViewController.swift */; };
+		2E28172B1E845AF700069BCA /* AirportDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E28172A1E845AF700069BCA /* AirportDetailsViewController.swift */; };
+		2E28172F1E845BF600069BCA /* MKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E28172C1E845BF600069BCA /* MKButton.swift */; };
+		2E2817301E845BF600069BCA /* MKLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E28172D1E845BF600069BCA /* MKLayer.swift */; };
+		2E2817311E845BF600069BCA /* MKTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E28172E1E845BF600069BCA /* MKTextField.swift */; };
+		2E2817331E845C2900069BCA /* MKColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2817321E845C2900069BCA /* MKColor.swift */; };
 		2E2959AF1E82F0BC0083141A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2959AE1E82F0BC0083141A /* AppDelegate.swift */; };
-		2E2959B11E82F0BC0083141A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2959B01E82F0BC0083141A /* ViewController.swift */; };
+		2E2959B11E82F0BC0083141A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2959B01E82F0BC0083141A /* MapViewController.swift */; };
 		2E2959B41E82F0BD0083141A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E2959B21E82F0BD0083141A /* Main.storyboard */; };
-		2E2959B61E82F0BD0083141A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E2959B51E82F0BD0083141A /* Assets.xcassets */; };
+		2E2959B61E82F0BD0083141A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E2959B51E82F0BD0083141A /* Images.xcassets */; };
 		2E2959B91E82F0BD0083141A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E2959B71E82F0BD0083141A /* LaunchScreen.storyboard */; };
 		2E2959C21E82F3740083141A /* GoogleMapsBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E2959C11E82F3740083141A /* GoogleMapsBase.framework */; };
 		2E2959C61E82F3A60083141A /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E2959C51E82F3A60083141A /* GoogleMaps.framework */; };
@@ -36,11 +42,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E2817281E844BCD00069BCA /* QueueDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueDisplayViewController.swift; sourceTree = "<group>"; };
+		2E28172A1E845AF700069BCA /* AirportDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportDetailsViewController.swift; sourceTree = "<group>"; };
+		2E28172C1E845BF600069BCA /* MKButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKButton.swift; sourceTree = "<group>"; };
+		2E28172D1E845BF600069BCA /* MKLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKLayer.swift; sourceTree = "<group>"; };
+		2E28172E1E845BF600069BCA /* MKTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKTextField.swift; sourceTree = "<group>"; };
+		2E2817321E845C2900069BCA /* MKColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKColor.swift; sourceTree = "<group>"; };
 		2E2959AB1E82F0BC0083141A /* Throughput Calculation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Throughput Calculation.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E2959AE1E82F0BC0083141A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2E2959B01E82F0BC0083141A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2E2959B01E82F0BC0083141A /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		2E2959B31E82F0BD0083141A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		2E2959B51E82F0BD0083141A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2E2959B51E82F0BD0083141A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2E2959B81E82F0BD0083141A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2E2959BA1E82F0BD0083141A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E2959C11E82F3740083141A /* GoogleMapsBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMapsBase.framework; sourceTree = "<group>"; };
@@ -91,6 +103,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E2817341E845C3B00069BCA /* Material Kit */ = {
+			isa = PBXGroup;
+			children = (
+				2E28172C1E845BF600069BCA /* MKButton.swift */,
+				2E28172D1E845BF600069BCA /* MKLayer.swift */,
+				2E28172E1E845BF600069BCA /* MKTextField.swift */,
+				2E2817321E845C2900069BCA /* MKColor.swift */,
+			);
+			name = "Material Kit";
+			sourceTree = "<group>";
+		};
 		2E2959A21E82F0BC0083141A = {
 			isa = PBXGroup;
 			children = (
@@ -113,11 +136,14 @@
 		2E2959AD1E82F0BC0083141A /* Throughput Calculation */ = {
 			isa = PBXGroup;
 			children = (
+				2E2817341E845C3B00069BCA /* Material Kit */,
 				2E2959EE1E82FF440083141A /* MapTasks.swift */,
 				2E2959AE1E82F0BC0083141A /* AppDelegate.swift */,
-				2E2959B01E82F0BC0083141A /* ViewController.swift */,
+				2E2959B01E82F0BC0083141A /* MapViewController.swift */,
 				2E2959B21E82F0BD0083141A /* Main.storyboard */,
-				2E2959B51E82F0BD0083141A /* Assets.xcassets */,
+				2E28172A1E845AF700069BCA /* AirportDetailsViewController.swift */,
+				2E2817281E844BCD00069BCA /* QueueDisplayViewController.swift */,
+				2E2959B51E82F0BD0083141A /* Images.xcassets */,
 				2E2959B71E82F0BD0083141A /* LaunchScreen.storyboard */,
 				2E2959BA1E82F0BD0083141A /* Info.plist */,
 			);
@@ -220,7 +246,7 @@
 				2E2959E71E82F5600083141A /* GoogleMaps.framework in Resources */,
 				2E2959E81E82F5600083141A /* GoogleMapsBase.framework in Resources */,
 				2E2959B91E82F0BD0083141A /* LaunchScreen.storyboard in Resources */,
-				2E2959B61E82F0BD0083141A /* Assets.xcassets in Resources */,
+				2E2959B61E82F0BD0083141A /* Images.xcassets in Resources */,
 				2E2959B41E82F0BD0083141A /* Main.storyboard in Resources */,
 				2E2959CA1E82F3F40083141A /* GoogleMaps.bundle in Resources */,
 			);
@@ -234,7 +260,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E2959EF1E82FF440083141A /* MapTasks.swift in Sources */,
-				2E2959B11E82F0BC0083141A /* ViewController.swift in Sources */,
+				2E2959B11E82F0BC0083141A /* MapViewController.swift in Sources */,
+				2E2817291E844BCD00069BCA /* QueueDisplayViewController.swift in Sources */,
+				2E2817331E845C2900069BCA /* MKColor.swift in Sources */,
+				2E2817301E845BF600069BCA /* MKLayer.swift in Sources */,
+				2E28172F1E845BF600069BCA /* MKButton.swift in Sources */,
+				2E2817311E845BF600069BCA /* MKTextField.swift in Sources */,
+				2E28172B1E845AF700069BCA /* AirportDetailsViewController.swift in Sources */,
 				2E2959AF1E82F0BC0083141A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -414,6 +446,7 @@
 				2E2959BF1E82F0BD0083141A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

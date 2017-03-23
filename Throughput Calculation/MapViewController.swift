@@ -14,7 +14,7 @@ enum TravelModes: Int {
 	case bicycling
 }
 
-class ViewController: UIViewController {
+class MapViewController: UIViewController {
 
 	@IBOutlet weak var viewMap: GMSMapView!
 	
