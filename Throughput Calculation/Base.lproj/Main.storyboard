@@ -68,7 +68,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="64o-30-noa" kind="push" id="R6o-7B-bee"/>
+                                    <action selector="goButtonPressed:" destination="rhu-gC-ypu" eventType="touchUpInside" id="LCh-eb-v4e"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gOu-jo-ZUW" customClass="MKTextField" customModule="Throughput_Calculation" customModuleProvider="target">
@@ -117,6 +117,7 @@
                     <connections>
                         <outlet property="airportNameTF" destination="Jzv-f9-1tn" id="Csq-Ny-nQY"/>
                         <outlet property="carrierNameTF" destination="gOu-jo-ZUW" id="n3M-if-nc9"/>
+                        <segue destination="64o-30-noa" kind="show" identifier="showTabBarController" id="uuE-Xa-kYH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rny-sh-QtG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -126,7 +127,7 @@
         <!--Airport-->
         <scene sceneID="J3Y-wG-BPG">
             <objects>
-                <tabBarController id="64o-30-noa" sceneMemberID="viewController">
+                <tabBarController id="64o-30-noa" customClass="CarrierTabBarController" customModule="Throughput_Calculation" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="Airport" id="gfo-5L-0JB"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="wY3-oA-5Mh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
