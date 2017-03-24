@@ -26,8 +26,17 @@ class QueueDisplayViewController: UIViewController {
 		
 		let lineShift = 10+80*(lineNumber-1)
 		
-		var startX = CGFloat(self.imageContainerView.frame.origin.x + CGFloat(lineShift))
-		var startY = self.imageContainerView.frame.origin.y+10
+		var startX = CGFloat(lineShift)
+		var startY = CGFloat(10.0)
+		
+		let bundle = Bundle(for: BoardView.self)
+		let nib = bundle.loadNibNamed("BoardView", owner: self, options: nil)
+		let timerView = nib?.first as! BoardView
+		
+		timerView.frame = CGRect(x: startX, y: startY, width: 40, height: 42)
+		timerView.timeLabel.text = "Hi"
+		imageContainerView.addSubview(timerView)
+		startY+=53
 		
 		let imageView = UIImageView(frame: CGRect(x: startX, y: startY, width: 40, height: 40))
 		imageView.image = UIImage(named:"stickManWalking")

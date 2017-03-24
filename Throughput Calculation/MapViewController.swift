@@ -22,7 +22,7 @@ class MapViewController: UIViewController {
 	
 	@IBOutlet weak var lblInfo: UILabel!
 	
-	var mapTasks = MapTasks()
+	let appDelegate = UIApplication.shared.delegate as! AppDelegate
 	
 	var locationMarker: GMSMarker!
 	
@@ -40,17 +40,19 @@ class MapViewController: UIViewController {
 	//Travel Modes
 	var travelMode = TravelModes.driving
 	
-	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
 		let camera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude: 48.857165, longitude: 2.354613, zoom: 8.0)
 		viewMap.camera = camera
-		
-		locationManager.delegate = self
+		self.locationManager.delegate = self
 		locationManager.requestWhenInUseAuthorization()
-		
 		viewMap.addObserver(self, forKeyPath: "myLocation", options: NSKeyValueObservingOptions.new, context: nil)
+	}
+	
+	deinit {
+		viewMap.removeObserver(self, forKeyPath: "myLocation", context: nil)
+		locationManager.delegate = nil
 	}
 	
 	override func didReceiveMemoryWarning() {
@@ -64,7 +66,7 @@ class MapViewController: UIViewController {
 			viewMap.camera = GMSCameraPosition.camera(withTarget: myLocation.coordinate, zoom: 15.0)
 			viewMap.settings.myLocationButton = true
 			
-			didFindMyLocation = false
+			didFindMyLocation = true
 		}
 	}
 
@@ -110,7 +112,7 @@ class MapViewController: UIViewController {
 		
 		locationMarker = GMSMarker(position: coordinate)
 		locationMarker.map = viewMap
-		locationMarker.title = mapTasks.fetchedFormattedAddress
+		locationMarker.title = self.appDelegate.mapTasks.fetchedFormattedAddress
 		locationMarker.appearAnimation = .pop
 		locationMarker.icon = GMSMarker.markerImage(with: UIColor.blue)
 		locationMarker.opacity = 0.75
@@ -129,7 +131,7 @@ class MapViewController: UIViewController {
 		let findAction = UIAlertAction(title: "Find Address", style: UIAlertActionStyle.default) { (alertAction) -> Void in
 			let address = (addressAlert.textFields![0] as UITextField).text! as String
 			
-			self.mapTasks.geocodeAddress(address: address, withCompletionHandler: { (status, success) -> Void in
+			self.appDelegate.mapTasks.geocodeAddress(address: address, withCompletionHandler: { (status, success) -> Void in
 				if !success {
 					print(status)
 					
@@ -138,7 +140,7 @@ class MapViewController: UIViewController {
 					}
 				}
 				else {
-					let coordinate = CLLocationCoordinate2D(latitude: self.mapTasks.fetchedAddressLatitude, longitude: self.mapTasks.fetchedAddressLongitude)
+					let coordinate = CLLocationCoordinate2D(latitude: self.appDelegate.mapTasks.fetchedAddressLatitude, longitude: self.appDelegate.mapTasks.fetchedAddressLongitude)
 					self.viewMap.camera = GMSCameraPosition.camera(withTarget: coordinate, zoom: 14.0)
 					self.setupLocationMarker(coordinate: coordinate)
 				}
@@ -188,7 +190,7 @@ class MapViewController: UIViewController {
 			let origin = (addressAlert.textFields![0] as UITextField).text! as String
 			let destination = (addressAlert.textFields![1] as UITextField).text! as String
 			
-			self.mapTasks.getDirections(origin: origin, destination: destination, waypoints: nil, travelMode: self.travelMode, completionHandler: { (status, success) -> Void in
+			self.self.appDelegate.mapTasks.getDirections(origin: origin, destination: destination, waypoints: nil, travelMode: self.travelMode, completionHandler: { (status, success) -> Void in
 				if success {
 					self.configureMapAndMarkersForRoute()
 					self.drawRoute()
@@ -211,22 +213,22 @@ class MapViewController: UIViewController {
 	}
 	
 	func configureMapAndMarkersForRoute() {
-		viewMap.camera = GMSCameraPosition.camera(withTarget: mapTasks.originCoordinate, zoom: 9.0)
+		viewMap.camera = GMSCameraPosition.camera(withTarget: self.appDelegate.mapTasks.originCoordinate, zoom: 9.0)
 		
 		
-		originMarker = GMSMarker(position: self.mapTasks.originCoordinate)
+		originMarker = GMSMarker(position: self.self.appDelegate.mapTasks.originCoordinate)
 		originMarker.map = self.viewMap
 		originMarker.icon = GMSMarker.markerImage(with: UIColor.green)
-		originMarker.title = self.mapTasks.originAddress
+		originMarker.title = self.self.appDelegate.mapTasks.originAddress
 		
-		destinationMarker = GMSMarker(position: self.mapTasks.destinationCoordinate)
+		destinationMarker = GMSMarker(position: self.self.appDelegate.mapTasks.destinationCoordinate)
 		destinationMarker.map = self.viewMap
 		destinationMarker.icon = GMSMarker.markerImage(with: UIColor.red)
-		destinationMarker.title = self.mapTasks.destinationAddress
+		destinationMarker.title = self.self.appDelegate.mapTasks.destinationAddress
 	}
 	
 	func drawRoute() {
-		let route = mapTasks.overviewPolyline["points"] as! String
+		let route = self.appDelegate.mapTasks.overviewPolyline["points"] as! String
 		
 		let path: GMSPath = GMSPath(fromEncodedPath: route)!
 		routePolyline = GMSPolyline(path: path)
@@ -234,7 +236,7 @@ class MapViewController: UIViewController {
 	}
 	
 	func displayRouteInfo() {
-		lblInfo.text = mapTasks.totalDistance + "\n" + mapTasks.totalDuration
+		lblInfo.text = self.appDelegate.mapTasks.totalDistance + "\n" + self.appDelegate.mapTasks.totalDuration
 	}
 	
 	func clearRoute() {
@@ -255,7 +257,7 @@ class MapViewController: UIViewController {
 		if let polyline = routePolyline {
 			clearRoute()
 			
-			mapTasks.getDirections(origin: mapTasks.originAddress, destination: mapTasks.destinationAddress, waypoints: nil, travelMode: self.travelMode, completionHandler: { (status, success) -> Void in
+			self.appDelegate.mapTasks.getDirections(origin: self.appDelegate.mapTasks.originAddress, destination: self.appDelegate.mapTasks.destinationAddress, waypoints: nil, travelMode: self.travelMode, completionHandler: { (status, success) -> Void in
 				
 				if success {
 					self.configureMapAndMarkersForRoute()
@@ -305,16 +307,12 @@ class MapViewController: UIViewController {
 
 //MARK:- Location Manager Delegate
 
-extension ViewController:CLLocationManagerDelegate{
+extension MapViewController:CLLocationManagerDelegate{
 	
 	func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
 		if status == CLAuthorizationStatus.authorizedWhenInUse {
 			viewMap.isMyLocationEnabled = true
 		}
-	}
-	
-	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-		
 	}
 	
 }

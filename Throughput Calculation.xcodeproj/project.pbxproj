@@ -13,6 +13,8 @@
 		2E2817301E845BF600069BCA /* MKLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E28172D1E845BF600069BCA /* MKLayer.swift */; };
 		2E2817311E845BF600069BCA /* MKTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E28172E1E845BF600069BCA /* MKTextField.swift */; };
 		2E2817331E845C2900069BCA /* MKColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2817321E845C2900069BCA /* MKColor.swift */; };
+		2E28173A1E84F3E400069BCA /* BoardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E2817391E84F3E400069BCA /* BoardView.xib */; };
+		2E28173C1E84F58B00069BCA /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E28173B1E84F58B00069BCA /* BoardView.swift */; };
 		2E2959AF1E82F0BC0083141A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2959AE1E82F0BC0083141A /* AppDelegate.swift */; };
 		2E2959B11E82F0BC0083141A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2959B01E82F0BC0083141A /* MapViewController.swift */; };
 		2E2959B41E82F0BD0083141A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E2959B21E82F0BD0083141A /* Main.storyboard */; };
@@ -48,6 +50,8 @@
 		2E28172D1E845BF600069BCA /* MKLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKLayer.swift; sourceTree = "<group>"; };
 		2E28172E1E845BF600069BCA /* MKTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKTextField.swift; sourceTree = "<group>"; };
 		2E2817321E845C2900069BCA /* MKColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKColor.swift; sourceTree = "<group>"; };
+		2E2817391E84F3E400069BCA /* BoardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BoardView.xib; path = ../BoardView.xib; sourceTree = "<group>"; };
+		2E28173B1E84F58B00069BCA /* BoardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		2E2959AB1E82F0BC0083141A /* Throughput Calculation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Throughput Calculation.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E2959AE1E82F0BC0083141A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2E2959B01E82F0BC0083141A /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +118,15 @@
 			name = "Material Kit";
 			sourceTree = "<group>";
 		};
+		2E2817361E84F38300069BCA /* Custom SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				2E2817391E84F3E400069BCA /* BoardView.xib */,
+				2E28173B1E84F58B00069BCA /* BoardView.swift */,
+			);
+			name = "Custom SubViews";
+			sourceTree = "<group>";
+		};
 		2E2959A21E82F0BC0083141A = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +149,7 @@
 		2E2959AD1E82F0BC0083141A /* Throughput Calculation */ = {
 			isa = PBXGroup;
 			children = (
+				2E2817361E84F38300069BCA /* Custom SubViews */,
 				2E2817341E845C3B00069BCA /* Material Kit */,
 				2E2959EE1E82FF440083141A /* MapTasks.swift */,
 				2E2959AE1E82F0BC0083141A /* AppDelegate.swift */,
@@ -243,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E2959E61E82F5600083141A /* GoogleMapsCore.framework in Resources */,
+				2E28173A1E84F3E400069BCA /* BoardView.xib in Resources */,
 				2E2959E71E82F5600083141A /* GoogleMaps.framework in Resources */,
 				2E2959E81E82F5600083141A /* GoogleMapsBase.framework in Resources */,
 				2E2959B91E82F0BD0083141A /* LaunchScreen.storyboard in Resources */,
@@ -266,6 +281,7 @@
 				2E2817301E845BF600069BCA /* MKLayer.swift in Sources */,
 				2E28172F1E845BF600069BCA /* MKButton.swift in Sources */,
 				2E2817311E845BF600069BCA /* MKTextField.swift in Sources */,
+				2E28173C1E84F58B00069BCA /* BoardView.swift in Sources */,
 				2E28172B1E845AF700069BCA /* AirportDetailsViewController.swift in Sources */,
 				2E2959AF1E82F0BC0083141A /* AppDelegate.swift in Sources */,
 			);
