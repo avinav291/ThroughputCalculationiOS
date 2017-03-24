@@ -1,5 +1,5 @@
 //
-//  MKButton.swift
+//  MKLabel.swift
 //  MaterialKit
 //
 //  Created by Avinav Goel on 23/03/17.
@@ -8,9 +8,7 @@
 
 import UIKit
 
-@IBDesignable
-public class MKButton : UIButton
-{
+public class MKLabel: UILabel {
     @IBInspectable public var maskEnabled: Bool = true {
         didSet {
             mkLayer.maskEnabled = maskEnabled
@@ -27,7 +25,7 @@ public class MKButton : UIButton
             mkLayer.elevation = elevation
         }
     }
-    @IBInspectable public var shadowOffset: CGSize = CGSize.zero {
+    @IBInspectable override public var shadowOffset: CGSize {
         didSet {
             mkLayer.shadowOffset = shadowOffset
         }
@@ -52,7 +50,7 @@ public class MKButton : UIButton
             mkLayer.rippleScaleRatio = rippleScaleRatio
         }
     }
-    @IBInspectable public var rippleLayerColor: UIColor = UIColor.gray {
+    @IBInspectable public var rippleLayerColor: UIColor = UIColor(hex: 0xEEEEEE) {
         didSet {
             mkLayer.setRippleColor(color: rippleLayerColor)
         }
@@ -68,23 +66,20 @@ public class MKButton : UIButton
             mkLayer.superLayerDidResize()
         }
     }
-
     private lazy var mkLayer: MKLayer = MKLayer(withView: self)
-
-    // MARK: Init
-    override public init(frame: CGRect) {
-        super.init(frame: frame)
-        setupLayer()
-    }
 
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupLayer()
     }
 
+    override public init(frame: CGRect) {
+        super.init(frame: frame)
+        setupLayer()
+    }
+
     // MARK: Setup
     private func setupLayer() {
-        mkLayer = MKLayer(withView: self)
         mkLayer.elevation = self.elevation
         self.layer.cornerRadius = self.cornerRadius
         mkLayer.elevationOffset = self.shadowOffset
@@ -98,6 +93,7 @@ public class MKButton : UIButton
     }
 
     // MARK: Touch
+
     public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         mkLayer.touchesBegan(touches: touches, withEvent: event)
@@ -108,8 +104,8 @@ public class MKButton : UIButton
         mkLayer.touchesEnded(touches: touches, withEvent: event)
     }
 
-    public override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesCancelled(touches, with: event)
+    public override func touchesCancelled(_ touches: Set<UITouch>?, with event: UIEvent?) {
+        super.touchesCancelled(touches!, with: event)
         mkLayer.touchesCancelled(touches: touches, withEvent: event)
     }
 
@@ -117,6 +113,4 @@ public class MKButton : UIButton
         super.touchesMoved(touches, with: event)
         mkLayer.touchesMoved(touches: touches, withEvent: event)
     }
-    
 }
-

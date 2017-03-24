@@ -43,6 +43,7 @@
 		2E2959EF1E82FF440083141A /* MapTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2959EE1E82FF440083141A /* MapTasks.swift */; };
 		2EA426FA1E850F810002AF43 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA426F91E850F810002AF43 /* Counter.swift */; };
 		2EA426FC1E8511450002AF43 /* CarrierTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA426FB1E8511450002AF43 /* CarrierTabBarController.swift */; };
+		2EA426FE1E851B5B0002AF43 /* MKLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA426FD1E851B5B0002AF43 /* MKLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +83,7 @@
 		2E2959EE1E82FF440083141A /* MapTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTasks.swift; sourceTree = "<group>"; };
 		2EA426F91E850F810002AF43 /* Counter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		2EA426FB1E8511450002AF43 /* CarrierTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarrierTabBarController.swift; sourceTree = "<group>"; };
+		2EA426FD1E851B5B0002AF43 /* MKLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MKLabel.swift; path = ../MKLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 		2E2817341E845C3B00069BCA /* Material Kit */ = {
 			isa = PBXGroup;
 			children = (
+				2EA426FD1E851B5B0002AF43 /* MKLabel.swift */,
 				2E28172C1E845BF600069BCA /* MKButton.swift */,
 				2E28172D1E845BF600069BCA /* MKLayer.swift */,
 				2E28172E1E845BF600069BCA /* MKTextField.swift */,
@@ -287,6 +290,7 @@
 				2E2817331E845C2900069BCA /* MKColor.swift in Sources */,
 				2E2817301E845BF600069BCA /* MKLayer.swift in Sources */,
 				2E28172F1E845BF600069BCA /* MKButton.swift in Sources */,
+				2EA426FE1E851B5B0002AF43 /* MKLabel.swift in Sources */,
 				2E2817311E845BF600069BCA /* MKTextField.swift in Sources */,
 				2EA426FC1E8511450002AF43 /* CarrierTabBarController.swift in Sources */,
 				2E28173C1E84F58B00069BCA /* BoardView.swift in Sources */,

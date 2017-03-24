@@ -10,12 +10,16 @@ import UIKit
 
 class CarrierTabBarController: UITabBarController {
 
-	var counters:[Counter]!
+	var counters:[Counter]! = []
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+		
+		if let queueVC = self.childViewControllers[1] as? QueueDisplayViewController{
+			queueVC.counters = self.counters
+		}
     }
 
     override func didReceiveMemoryWarning() {

@@ -14,9 +14,26 @@ class AirportDetailsViewController: UIViewController {
 	@IBOutlet weak var carrierNameTF: MKTextField!
 	
 	var counters : [Counter]! = []
+	var airports: [String:[String]] = [:]
+
+	var airportPickerView  = UIPickerView()
+	var carrierPickerView  = UIPickerView()
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 
+		airportPickerView.delegate = self
+		airportPickerView.dataSource = self
+		
+		carrierPickerView.delegate = self
+		carrierPickerView.dataSource = self
+		
+		self.airportNameTF.inputView = airportPickerView
+		self.carrierNameTF.inputView = carrierPickerView
+		
+		
+		
+		self.findCarriers()
         // Do any additional setup after loading the view.
 		
     }
@@ -27,9 +44,40 @@ class AirportDetailsViewController: UIViewController {
     }
 	
 	@IBAction func goButtonPressed(_ sender: Any) {
-		
+		self.counters = []
 		self.getDetails()
 		
+	}
+	
+	func findCarriers(){
+		let url = URL(string: "http://localhost:3000/api/sendCarriers")
+		let request = NSMutableURLRequest(url: url!)
+		request.httpMethod = "GET"
+		
+		let task = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) in
+			if error != nil {
+				print(error!)
+				return
+			}
+			do{
+				
+				let responseJson = try JSONSerialization.jsonObject(with: data!, options: .allowFragments)
+				print(responseJson)
+				
+				if let json = responseJson as? [String:[String]]{
+					self.airports = json
+					self.airportPickerView.reloadAllComponents()
+					self.carrierPickerView.reloadAllComponents()
+				}
+				
+				
+			}
+			catch{
+				print("Json Receiving error")
+			}
+		})
+		
+		task.resume()
 	}
 	
 	
@@ -52,14 +100,17 @@ class AirportDetailsViewController: UIViewController {
 				}
 				do{
 
-					let responseJson = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [[String:Any]]
-					print(responseJson)
+					let responseJson = try JSONSerialization.jsonObject(with: data!, options: .allowFragments)
 					
-					for counter in responseJson{
-						self.counters.append(Counter(throughput: counter["throughput"] as! Int, counterNumber: counter["counterNumber"] as! Int, counterCount: counter["counterCount"] as! Int))
+					if let json = responseJson as? [[String:Any]]{
+						
+						for counter in json{
+							self.counters.append(Counter(throughput: counter["throughput"] as! Int, counterNumber: counter["counterNumber"] as! Int, counterCount: counter["counterCount"] as! Int))
+						}
+						DispatchQueue.main.async {
+							self.performSegue(withIdentifier: "showTabBarController", sender: self)
+						}
 					}
-					
-					self.performSegue(withIdentifier: "showTabBarController", sender: self)
 					
 					
 				}
@@ -69,6 +120,8 @@ class AirportDetailsViewController: UIViewController {
 			})
 			
 			task.resume()
+			self.airportNameTF.text = ""
+			self.carrierNameTF.text = ""
 		}
 	}
 	
@@ -87,4 +140,61 @@ class AirportDetailsViewController: UIViewController {
     }
 
 
+}
+
+extension AirportDetailsViewController:UIPickerViewDelegate, UIPickerViewDataSource{
+	
+	func numberOfComponents(in pickerView: UIPickerView) -> Int {
+		return 1
+	}
+	
+	func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+		
+		if pickerView == self.airportPickerView{
+			return self.airports.keys.count
+		}
+		else if pickerView == self.carrierPickerView{
+			if let carriers = self.airports[self.airportNameTF.text!]{
+				return carriers.count
+			}
+			else{
+				return 0
+			}
+		}
+		return 0
+	}
+	
+	func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+		if pickerView == self.airportPickerView{
+			return Array(self.airports.keys)[row]
+		}
+		else if pickerView == self.carrierPickerView{
+			if let carriers = self.airports[self.airportNameTF.text!]{
+				return Array(carriers)[row]
+			}
+			else{
+				return "Please Select an Airport"
+			}
+		}
+		return ""
+	}
+	
+	func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+		if pickerView == self.airportPickerView{
+			self.airportNameTF.text = Array(self.airports.keys)[row]
+		}
+		else if pickerView == self.carrierPickerView{
+			if let carriers = self.airports[self.airportNameTF.text!]{
+				self.carrierNameTF.text = Array(carriers)[row]
+			}
+			else{
+				self.carrierNameTF.text = ""
+			}
+		}
+		self.view.endEditing(true)
+	}
+	
+	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+		view.endEditing(true)
+	}
 }

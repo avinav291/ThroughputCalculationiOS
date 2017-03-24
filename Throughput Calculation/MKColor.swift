@@ -1,4 +1,10 @@
-
+//
+//  MKColor.swift
+//  MaterialKit
+//
+//  Created by Avinav Goel on 23/03/17.
+//  Copyright © 2017 Avinav Goel. All rights reserved.
+//
 
 import UIKit
 

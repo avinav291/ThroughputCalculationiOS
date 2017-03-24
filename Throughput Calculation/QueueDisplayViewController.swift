@@ -12,13 +12,14 @@ class QueueDisplayViewController: UIViewController {
 
 	@IBOutlet weak var imageContainerView: UIView!
 	
+	var counters : [Counter] = []
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		self.positionImages(lineNumber: 1, lineCount: 5)
-		self.positionImages(lineNumber: 2, lineCount: 6)
-		self.positionImages(lineNumber: 3, lineCount: 8)
-		self.positionImages(lineNumber: 4, lineCount: 4)
+		for counter in counters{
+			self.positionImages(lineNumber: counter.counterNumber, lineCount: counter.counterCount)
+		}
         // Do any additional setup after loading the view.
     }
 	
