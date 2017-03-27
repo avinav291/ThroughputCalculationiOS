@@ -8,6 +8,7 @@
 
 import UIKit
 import SpriteKit
+import Firebase
 
 class AnimatedQueueDisplayViewController: UIViewController {
 	
@@ -20,6 +21,8 @@ class AnimatedQueueDisplayViewController: UIViewController {
 	var skView:SKView!
 	var scene:MyScene!
 	let defaults = UserDefaults.standard
+	
+	var ref = FIRDatabase.database().reference()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,12 +42,17 @@ class AnimatedQueueDisplayViewController: UIViewController {
 		
 		skView.presentScene(scene)
 		
-		self.updateSKScene()
+//		self.updateSKScene()
     }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(true)
+		self.getDetails()
+	}
 	
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(true)
-		self.getDetails()
+//		self.getDetails()
 	}
 
     override func didReceiveMemoryWarning() {
@@ -62,50 +70,65 @@ class AnimatedQueueDisplayViewController: UIViewController {
 	}
 	
 	func getDetails(){
-		let airportName = self.airportName
-		let carrierName = self.carrierName
-		
-		if airportName != "" && carrierName != ""{
-			
-			let ipAddress = defaults.string(forKey: "ipAddress")
-			
-			let url = URL(string: "http://\(ipAddress!)/api/sendQueueData")
-			let postString = "airportName=\(airportName!)&carrierName=\(carrierName!)"
-			let request = NSMutableURLRequest(url: url!)
-			request.httpMethod = "POST"
-			request.httpBody = postString.data(using: .utf8)
-			
-			let task = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) in
-				if error != nil {
-					print(error!)
-					return
-				}
-				do{
-					
-					let responseJson = try JSONSerialization.jsonObject(with: data!, options: .allowFragments)
-					
-					if let json = responseJson as? [[String:Any]]{
-						
-						self.counters = []
-						for counter in json{
-							self.counters.append(Counter(throughput: counter["throughput"] as! Int, counterNumber: counter["counterNumber"] as! Int, counterCount: counter["counterCount"] as! Int))
-						}
-						self.updateSKScene()
-						DispatchQueue.main.async {
-							Timer.scheduledTimer(timeInterval: 15.0, target: self, selector: #selector(self.getDetails), userInfo: nil, repeats: false)
-						}
+		ref.child("\(self.airportName!)/\(self.carrierName!)").observe(.value, with: { (snapshot) in
+//			print(snapshot.value!)
+			if let snap = snapshot.value as? NSArray{
+				self.counters = []
+				for lane in snap{
+					if let counter = lane as? [String:Any]{
+						self.counters.append(Counter(throughput: Int(counter["throughput"] as! String)!, counterNumber: Int(counter["counterNumber"] as! String)!, counterCount: Int(counter["counterCount"] as! String)!))
 					}
-					
-					
 				}
-				catch{
-					print("Json Receiving error")
-				}
-			})
-			
-			task.resume()
-		}
+				self.updateSKScene()
+			}
+		})
 	}
+	
+//	func getDetails(){
+//		let airportName = self.airportName
+//		let carrierName = self.carrierName
+//		
+//		if airportName != "" && carrierName != ""{
+//			
+//			let ipAddress = defaults.string(forKey: "ipAddress")
+//			
+//			let url = URL(string: "http://\(ipAddress!)/api/sendQueueData")
+//			let postString = "airportName=\(airportName!)&carrierName=\(carrierName!)"
+//			let request = NSMutableURLRequest(url: url!)
+//			request.httpMethod = "POST"
+//			request.httpBody = postString.data(using: .utf8)
+//			
+//			let task = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) in
+//				if error != nil {
+//					print(error!)
+//					return
+//				}
+//				do{
+//					
+//					let responseJson = try JSONSerialization.jsonObject(with: data!, options: .allowFragments)
+//					
+//					if let json = responseJson as? [[String:Any]]{
+//						
+//						self.counters = []
+//						for counter in json{
+//							self.counters.append(Counter(throughput: counter["throughput"] as! Int, counterNumber: counter["counterNumber"] as! Int, counterCount: counter["counterCount"] as! Int))
+//						}
+//						self.updateSKScene()
+//						DispatchQueue.main.async {
+//							Timer.scheduledTimer(timeInterval: 15.0, target: self, selector: #selector(self.getDetails), userInfo: nil, repeats: false)
+//						}
+//					}
+//					
+//					
+//				}
+//				catch{
+//					print("Json Receiving error")
+//				}
+//			})
+//			
+//			task.resume()
+//		}
+//	}
 	
 	func updateSKScene(){
 		for counter in self.counters{

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class AirportDetailsViewController: UIViewController {
 
@@ -22,11 +23,14 @@ class AirportDetailsViewController: UIViewController {
 	
 	let defaults = UserDefaults.standard
 	
+	var ref = FIRDatabase.database().reference()
+	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)
 		self.airportNameTF.text = ""
 		self.carrierNameTF.text = ""
 //		self.findCarriers()
+		findAirportsAndCarriers()
 	}
 	
     override func viewDidLoad() {
@@ -52,94 +56,115 @@ class AirportDetailsViewController: UIViewController {
 	
 	@IBAction func goButtonPressed(_ sender: Any) {
 		self.counters = []
-		self.getDetails()
+		self.performSegue(withIdentifier: "showTabBarController", sender: self)
+//		self.getDetails()
 		
 	}
 	
-	@IBAction func IPActionButtonPressed(_ sender: Any) {
-		let ipAddress  = self.ipAddressTF.text ?? "localhost:3000"
-		
-		defaults.set(ipAddress, forKey: "ipAddress")
-		self.findCarriers()
-	}
-	func findCarriers(){
-		
-		
-		let ipAddress = self.defaults.string(forKey: "ipAddress")
-		let url = URL(string: "http://\(ipAddress!)/api/sendCarriers")
-		let request = NSMutableURLRequest(url: url!)
-		request.httpMethod = "GET"
-		
-		let task = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) in
-			if error != nil {
-				print(error!)
-				return
-			}
-			do{
-				
-				let responseJson = try JSONSerialization.jsonObject(with: data!, options: .allowFragments)
-				print(responseJson)
-				
-				if let json = responseJson as? [String:[String]]{
-					self.airports = json
-					self.airportPickerView.reloadAllComponents()
-					self.carrierPickerView.reloadAllComponents()
+//	@IBAction func IPActionButtonPressed(_ sender: Any) {
+//		let ipAddress  = self.ipAddressTF.text ?? "localhost:3000"
+//		
+//		defaults.set(ipAddress, forKey: "ipAddress")
+////		self.findCarriers()
+//	}
+	
+	///Func to fetch details from the firebase
+	func findAirportsAndCarriers(){
+	
+		self.ref.observeSingleEvent(of: .value, with: { (snapshot) in
+			if let dict = snapshot.value as? [String:Any]{
+				for key in dict.keys{
+					var carriers : [String] = []
+					if let carrier = dict[key] as? [String:Any]{
+						carriers += Array(carrier.keys)
+					}
+					self.airports[key] = carriers
 				}
-				
-				
-			}
-			catch{
-				print("Json Receiving error")
+				self.airportPickerView.reloadAllComponents()
+				self.carrierPickerView.reloadAllComponents()
 			}
 		})
-		
-		task.resume()
 	}
 	
 	
-	func getDetails(){
-		let airportName = self.airportNameTF.text
-		let carrierName = self.carrierNameTF.text
-		
-		if airportName != "" && carrierName != ""{
-			
-			let ipAddress = defaults.string(forKey: "ipAddress")
-			
-			let url = URL(string: "http://\(ipAddress!)/api/sendQueueData")
-			let postString = "airportName=\(airportName!)&carrierName=\(carrierName!)"
-			let request = NSMutableURLRequest(url: url!)
-			request.httpMethod = "POST"
-			request.httpBody = postString.data(using: .utf8)
-			
-			let task = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) in
-				if error != nil {
-					print(error!)
-					return
-				}
-				do{
-
-					let responseJson = try JSONSerialization.jsonObject(with: data!, options: .allowFragments)
-					
-					if let json = responseJson as? [[String:Any]]{
-						
-						for counter in json{
-							self.counters.append(Counter(throughput: counter["throughput"] as! Int, counterNumber: counter["counterNumber"] as! Int, counterCount: counter["counterCount"] as! Int))
-						}
-						DispatchQueue.main.async {
-							self.performSegue(withIdentifier: "showTabBarController", sender: self)
-						}
-					}
-					
-					
-				}
-				catch{
-					print("Json Receiving error")
-				}
-			})
-			
-			task.resume()
-		}
-	}
+//	func findCarriers(){
+//		
+//		
+//		let ipAddress = self.defaults.string(forKey: "ipAddress")
+//		let url = URL(string: "http://\(ipAddress!)/api/sendCarriers")
+//		let request = NSMutableURLRequest(url: url!)
+//		request.httpMethod = "GET"
+//		
+//		let task = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) in
+//			if error != nil {
+//				print(error!)
+//				return
+//			}
+//			do{
+//				
+//				let responseJson = try JSONSerialization.jsonObject(with: data!, options: .allowFragments)
+//				print(responseJson)
+//				
+//				if let json = responseJson as? [String:[String]]{
+//					self.airports = json
+//					self.airportPickerView.reloadAllComponents()
+//					self.carrierPickerView.reloadAllComponents()
+//				}
+//				
+//				
+//			}
+//			catch{
+//				print("Json Receiving error")
+//			}
+//		})
+//		
+//		task.resume()
+//	}
+//	
+//	
+//	func getDetails(){
+//		let airportName = self.airportNameTF.text
+//		let carrierName = self.carrierNameTF.text
+//		
+//		if airportName != "" && carrierName != ""{
+//			
+//			let ipAddress = defaults.string(forKey: "ipAddress")
+//			
+//			let url = URL(string: "http://\(ipAddress!)/api/sendQueueData")
+//			let postString = "airportName=\(airportName!)&carrierName=\(carrierName!)"
+//			let request = NSMutableURLRequest(url: url!)
+//			request.httpMethod = "POST"
+//			request.httpBody = postString.data(using: .utf8)
+//			
+//			let task = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) in
+//				if error != nil {
+//					print(error!)
+//					return
+//				}
+//				do{
+//
+//					let responseJson = try JSONSerialization.jsonObject(with: data!, options: .allowFragments)
+//					
+//					if let json = responseJson as? [[String:Any]]{
+//						
+//						for counter in json{
+//							self.counters.append(Counter(throughput: counter["throughput"] as! Int, counterNumber: counter["counterNumber"] as! Int, counterCount: counter["counterCount"] as! Int))
+//						}
+//						DispatchQueue.main.async {
+//							self.performSegue(withIdentifier: "showTabBarController", sender: self)
+//						}
+//					}
+//					
+//					
+//				}
+//				catch{
+//					print("Json Receiving error")
+//				}
+//			})
+//			
+//			task.resume()
+//		}
+//	}
 	
 
     // MARK: - Navigation
@@ -150,7 +175,7 @@ class AirportDetailsViewController: UIViewController {
         // Pass the selected object to the new view controller.
 		if segue.identifier == "showTabBarController"{
 			if let tabVC = segue.destination as? CarrierTabBarController{
-				tabVC.counters = self.counters
+//				tabVC.counters = self.counters
 				tabVC.airportName = self.airportNameTF.text
 				tabVC.carrierName = self.carrierNameTF.text
 			}

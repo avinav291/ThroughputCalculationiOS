@@ -99,73 +99,17 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="IP Address" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dcO-Ij-qEI" customClass="MKTextField" customModule="Throughput_Calculation" customModuleProvider="target">
-                                <rect key="frame" x="30" y="142" width="225" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="r5m-g9-kRe"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="floatingLabelBottomMargin">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="rippleEnabled" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="rippleScaleRatio">
-                                        <real key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="rippleLayerColor">
-                                        <color key="value" red="1" green="0.16679966339999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelTextColor">
-                                        <color key="value" red="0.15686274510000001" green="0.60784313729999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dtG-S6-e1Q" customClass="MKButton" customModule="Throughput_Calculation" customModuleProvider="target">
-                                <rect key="frame" x="263" y="142" width="82" height="50"/>
-                                <color key="backgroundColor" red="0.19215686269999999" green="0.64313725489999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="Ems-6w-i2c"/>
-                                    <constraint firstAttribute="width" constant="82" id="vJd-yV-HXp"/>
-                                </constraints>
-                                <state key="normal" title="IP">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="rippleEnabled" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="rippleScaleRatio">
-                                        <real key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="rippleLayerColor">
-                                        <color key="value" red="1" green="0.16679966339999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="IPActionButtonPressed:" destination="rhu-gC-ypu" eventType="touchUpInside" id="eue-hB-cac"/>
-                                    <action selector="goButtonPressed:" destination="rhu-gC-ypu" eventType="touchUpInside" id="qCc-pz-AOe"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="dcO-Ij-qEI" firstAttribute="leading" secondItem="zUg-CA-RII" secondAttribute="leading" constant="30" id="92j-yL-6TP"/>
                             <constraint firstItem="qEm-B6-ggA" firstAttribute="top" secondItem="gOu-jo-ZUW" secondAttribute="bottom" constant="66" id="9AD-a7-j0K"/>
                             <constraint firstItem="gOu-jo-ZUW" firstAttribute="leading" secondItem="zUg-CA-RII" secondAttribute="leading" constant="30" id="9JA-cO-hGA"/>
                             <constraint firstItem="Jzv-f9-1tn" firstAttribute="leading" secondItem="zUg-CA-RII" secondAttribute="leading" constant="30" id="DEO-HY-JgE"/>
                             <constraint firstItem="Jzv-f9-1tn" firstAttribute="centerX" secondItem="zUg-CA-RII" secondAttribute="centerX" id="DXj-bl-Hvv"/>
                             <constraint firstItem="gOu-jo-ZUW" firstAttribute="top" secondItem="Jzv-f9-1tn" secondAttribute="bottom" constant="30" id="Gsr-tl-LRs"/>
-                            <constraint firstItem="Jzv-f9-1tn" firstAttribute="top" secondItem="dtG-S6-e1Q" secondAttribute="bottom" constant="36.5" id="JHz-HT-W4h"/>
                             <constraint firstAttribute="trailing" secondItem="Jzv-f9-1tn" secondAttribute="trailing" constant="30" id="Q9H-fX-cu4"/>
-                            <constraint firstAttribute="trailing" secondItem="dtG-S6-e1Q" secondAttribute="trailing" constant="30" id="SQR-6K-7dP"/>
                             <constraint firstAttribute="trailing" secondItem="gOu-jo-ZUW" secondAttribute="trailing" constant="30" id="Tqa-nQ-BQK"/>
-                            <constraint firstItem="Jzv-f9-1tn" firstAttribute="top" secondItem="dcO-Ij-qEI" secondAttribute="bottom" constant="36.5" id="Wlm-vS-l1u"/>
                             <constraint firstItem="gOu-jo-ZUW" firstAttribute="centerX" secondItem="zUg-CA-RII" secondAttribute="centerX" id="bwW-2A-5GF"/>
-                            <constraint firstItem="dtG-S6-e1Q" firstAttribute="leading" secondItem="dcO-Ij-qEI" secondAttribute="trailing" constant="8" id="jsm-tC-CbQ"/>
                             <constraint firstItem="qEm-B6-ggA" firstAttribute="centerX" secondItem="zUg-CA-RII" secondAttribute="centerX" id="pAz-D6-Tgj"/>
                             <constraint firstItem="gOu-jo-ZUW" firstAttribute="centerY" secondItem="zUg-CA-RII" secondAttribute="centerY" id="s1z-0C-xmI"/>
                         </constraints>
@@ -174,7 +118,6 @@
                     <connections>
                         <outlet property="airportNameTF" destination="Jzv-f9-1tn" id="Csq-Ny-nQY"/>
                         <outlet property="carrierNameTF" destination="gOu-jo-ZUW" id="n3M-if-nc9"/>
-                        <outlet property="ipAddressTF" destination="dcO-Ij-qEI" id="HZR-EE-6Vg"/>
                         <segue destination="64o-30-noa" kind="show" identifier="showTabBarController" id="uuE-Xa-kYH"/>
                     </connections>
                 </viewController>

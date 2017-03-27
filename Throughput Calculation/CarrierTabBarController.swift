@@ -10,7 +10,7 @@ import UIKit
 
 class CarrierTabBarController: UITabBarController {
 
-	var counters:[Counter]! = []
+//	var counters:[Counter]! = []
 	let appDelegate = UIApplication.shared.delegate as! AppDelegate
 	var airportName:String! = ""
 	var carrierName:String! = ""
@@ -20,11 +20,11 @@ class CarrierTabBarController: UITabBarController {
 
         // Do any additional setup after loading the view.
 		
-		if let queueVC = self.childViewControllers[1] as? QueueDisplayViewController{
-			queueVC.counters = self.counters
-		}
+//		if let queueVC = self.childViewControllers[1] as? QueueDisplayViewController{
+//			queueVC.counters = self.counters
+//		}
 		if let queueVC = self.childViewControllers[1] as? AnimatedQueueDisplayViewController{
-			queueVC.counters = self.counters
+//			queueVC.counters = self.counters
 			queueVC.airportName = self.airportName
 			queueVC.carrierName = self.carrierName
 		}

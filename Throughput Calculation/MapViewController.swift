@@ -61,6 +61,7 @@ class MapViewController: UIViewController {
 		viewMap.camera = camera
 		self.locationManager.delegate = self
 		locationManager.requestWhenInUseAuthorization()
+		locationManager.startUpdatingHeading()
 		viewMap.addObserver(self, forKeyPath: "myLocation", options: NSKeyValueObservingOptions.new, context: nil)
 		viewMap.delegate = self
 	}
@@ -78,6 +79,7 @@ class MapViewController: UIViewController {
 	override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
 		if !didFindMyLocation {
 			let myLocation: CLLocation = change![NSKeyValueChangeKey.newKey] as! CLLocation
+			self.locationManager.stopUpdatingLocation()
 			viewMap.camera = GMSCameraPosition.camera(withTarget: myLocation.coordinate, zoom: 10.0)
 			viewMap.settings.myLocationButton = true
 			
