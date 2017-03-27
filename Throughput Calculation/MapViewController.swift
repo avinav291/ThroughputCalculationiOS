@@ -37,8 +37,22 @@ class MapViewController: UIViewController {
  
 	var routePolyline: GMSPolyline!
 	
+	var airportName:String!
+	
 	//Travel Modes
 	var travelMode = TravelModes.driving
+	
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(true)
+		
+		self.viewMap.layer.cornerRadius = 1
+		self.viewMap.layer.shadowOpacity = 1
+		self.viewMap.layer.shadowRadius = 2
+		self.viewMap.layer.shadowOffset = CGSize(width: 1, height: 1)
+		self.viewMap.layer.shadowColor = UIColor.gray.cgColor
+		self.viewMap.layer.masksToBounds = false
+	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -48,6 +62,7 @@ class MapViewController: UIViewController {
 		self.locationManager.delegate = self
 		locationManager.requestWhenInUseAuthorization()
 		viewMap.addObserver(self, forKeyPath: "myLocation", options: NSKeyValueObservingOptions.new, context: nil)
+		viewMap.delegate = self
 	}
 	
 	deinit {
@@ -63,13 +78,36 @@ class MapViewController: UIViewController {
 	override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
 		if !didFindMyLocation {
 			let myLocation: CLLocation = change![NSKeyValueChangeKey.newKey] as! CLLocation
-			viewMap.camera = GMSCameraPosition.camera(withTarget: myLocation.coordinate, zoom: 15.0)
+			viewMap.camera = GMSCameraPosition.camera(withTarget: myLocation.coordinate, zoom: 10.0)
 			viewMap.settings.myLocationButton = true
 			
 			didFindMyLocation = true
+			let origin = "\(myLocation.coordinate.latitude),\(myLocation.coordinate.longitude)"
+			self.createRouteToAirport(origin: origin)
 		}
 	}
 
+	
+	func createRouteToAirport(origin:String!){
+		if airportName != nil{
+			if (self.routePolyline) != nil {
+				self.clearRoute()
+			}
+
+			let destination = airportName
+			
+			self.self.appDelegate.mapTasks.getDirections(origin: origin, destination: destination, waypoints: nil, travelMode: self.travelMode, completionHandler: { (status, success) -> Void in
+				if success {
+					self.configureMapAndMarkersForRoute()
+					self.drawRoute()
+					self.displayRouteInfo()
+				}
+				else {
+					print(status)
+				}
+			})
+		}
+	}
 	
 	// MARK: IBAction method implementation
 	
@@ -131,20 +169,21 @@ class MapViewController: UIViewController {
 		let findAction = UIAlertAction(title: "Find Address", style: UIAlertActionStyle.default) { (alertAction) -> Void in
 			let address = (addressAlert.textFields![0] as UITextField).text! as String
 			
-			self.appDelegate.mapTasks.geocodeAddress(address: address, withCompletionHandler: { (status, success) -> Void in
-				if !success {
-					print(status)
-					
-					if status == "ZERO_RESULTS" {
-						self.showAlertWithMessage(message: "The location could not be found.")
-					}
-				}
-				else {
-					let coordinate = CLLocationCoordinate2D(latitude: self.appDelegate.mapTasks.fetchedAddressLatitude, longitude: self.appDelegate.mapTasks.fetchedAddressLongitude)
-					self.viewMap.camera = GMSCameraPosition.camera(withTarget: coordinate, zoom: 14.0)
-					self.setupLocationMarker(coordinate: coordinate)
-				}
-			})
+			self.createRouteToAirport(origin: address)
+//			self.appDelegate.mapTasks.geocodeAddress(address: address, withCompletionHandler: { (status, success) -> Void in
+//				if !success {
+//					print(status)
+//					
+//					if status == "ZERO_RESULTS" {
+//						self.showAlertWithMessage(message: "The location could not be found.")
+//					}
+//				}
+//				else {
+//					let coordinate = CLLocationCoordinate2D(latitude: self.appDelegate.mapTasks.fetchedAddressLatitude, longitude: self.appDelegate.mapTasks.fetchedAddressLongitude)
+//					self.viewMap.camera = GMSCameraPosition.camera(withTarget: coordinate, zoom: 14.0)
+//					self.setupLocationMarker(coordinate: coordinate)
+//				}
+//			})
 			
 		}
 		
@@ -233,6 +272,9 @@ class MapViewController: UIViewController {
 		let path: GMSPath = GMSPath(fromEncodedPath: route)!
 		routePolyline = GMSPolyline(path: path)
 		routePolyline.map = viewMap
+		
+		let coordibateBounds = GMSCoordinateBounds(path: path)
+		self.viewMap.animate(with: GMSCameraUpdate.fit(coordibateBounds, withPadding: 10.0))
 	}
 	
 	func displayRouteInfo() {
@@ -254,7 +296,7 @@ class MapViewController: UIViewController {
 	}
 	
 	func recreateRoute() {
-		if let polyline = routePolyline {
+		if (routePolyline) != nil {
 			clearRoute()
 			
 			self.appDelegate.mapTasks.getDirections(origin: self.appDelegate.mapTasks.originAddress, destination: self.appDelegate.mapTasks.destinationAddress, waypoints: nil, travelMode: self.travelMode, completionHandler: { (status, success) -> Void in
@@ -307,7 +349,7 @@ class MapViewController: UIViewController {
 
 //MARK:- Location Manager Delegate
 
-extension MapViewController:CLLocationManagerDelegate{
+extension MapViewController:CLLocationManagerDelegate, GMSMapViewDelegate{
 	
 	func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
 		if status == CLAuthorizationStatus.authorizedWhenInUse {
@@ -315,12 +357,14 @@ extension MapViewController:CLLocationManagerDelegate{
 		}
 	}
 	
+	func didTapMyLocationButton(for mapView: GMSMapView) -> Bool {
+		
+		if mapView.myLocation != nil{
+			let origin = "\(mapView.myLocation!.coordinate.latitude),\(mapView.myLocation!.coordinate.longitude)"
+			self.createRouteToAirport(origin: origin)
+		}
+		return true
+	}
+	
+	
 }
-
-
-
-
-
-
-
-

@@ -18,12 +18,12 @@ class QueueDisplayViewController: UIViewController {
         super.viewDidLoad()
 		
 		for counter in counters{
-			self.positionImages(lineNumber: counter.counterNumber, lineCount: counter.counterCount)
+			self.positionImages(lineNumber: counter.counterNumber, lineCount: counter.counterCount, throughput: counter.throughput)
 		}
         // Do any additional setup after loading the view.
     }
 	
-	func positionImages(lineNumber:Int, lineCount:Int){
+	func positionImages(lineNumber:Int, lineCount:Int, throughput:Int){
 		
 		let lineShift = 10+80*(lineNumber-1)
 		
@@ -35,7 +35,7 @@ class QueueDisplayViewController: UIViewController {
 		let timerView = nib?.first as! BoardView
 		
 		timerView.frame = CGRect(x: startX, y: startY, width: 40, height: 42)
-		timerView.timeLabel.text = "Hi"
+		timerView.timeLabel.text = "\(throughput)s"
 		imageContainerView.addSubview(timerView)
 		startY+=53
 		

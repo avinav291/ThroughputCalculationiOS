@@ -12,6 +12,7 @@ class AirportDetailsViewController: UIViewController {
 
 	@IBOutlet weak var airportNameTF: MKTextField!
 	@IBOutlet weak var carrierNameTF: MKTextField!
+	@IBOutlet weak var ipAddressTF: MKTextField!
 	
 	var counters : [Counter]! = []
 	var airports: [String:[String]] = [:]
@@ -19,9 +20,18 @@ class AirportDetailsViewController: UIViewController {
 	var airportPickerView  = UIPickerView()
 	var carrierPickerView  = UIPickerView()
 	
+	let defaults = UserDefaults.standard
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(true)
+		self.airportNameTF.text = ""
+		self.carrierNameTF.text = ""
+//		self.findCarriers()
+	}
+	
     override func viewDidLoad() {
         super.viewDidLoad()
-
+		
 		airportPickerView.delegate = self
 		airportPickerView.dataSource = self
 		
@@ -31,9 +41,6 @@ class AirportDetailsViewController: UIViewController {
 		self.airportNameTF.inputView = airportPickerView
 		self.carrierNameTF.inputView = carrierPickerView
 		
-		
-		
-		self.findCarriers()
         // Do any additional setup after loading the view.
 		
     }
@@ -49,8 +56,17 @@ class AirportDetailsViewController: UIViewController {
 		
 	}
 	
+	@IBAction func IPActionButtonPressed(_ sender: Any) {
+		let ipAddress  = self.ipAddressTF.text ?? "localhost:3000"
+		
+		defaults.set(ipAddress, forKey: "ipAddress")
+		self.findCarriers()
+	}
 	func findCarriers(){
-		let url = URL(string: "http://localhost:3000/api/sendCarriers")
+		
+		
+		let ipAddress = self.defaults.string(forKey: "ipAddress")
+		let url = URL(string: "http://\(ipAddress!)/api/sendCarriers")
 		let request = NSMutableURLRequest(url: url!)
 		request.httpMethod = "GET"
 		
@@ -86,8 +102,10 @@ class AirportDetailsViewController: UIViewController {
 		let carrierName = self.carrierNameTF.text
 		
 		if airportName != "" && carrierName != ""{
-		
-			let url = URL(string: "http://localhost:3000/api/sendQueueData")
+			
+			let ipAddress = defaults.string(forKey: "ipAddress")
+			
+			let url = URL(string: "http://\(ipAddress!)/api/sendQueueData")
 			let postString = "airportName=\(airportName!)&carrierName=\(carrierName!)"
 			let request = NSMutableURLRequest(url: url!)
 			request.httpMethod = "POST"
@@ -120,8 +138,6 @@ class AirportDetailsViewController: UIViewController {
 			})
 			
 			task.resume()
-			self.airportNameTF.text = ""
-			self.carrierNameTF.text = ""
 		}
 	}
 	
@@ -135,6 +151,8 @@ class AirportDetailsViewController: UIViewController {
 		if segue.identifier == "showTabBarController"{
 			if let tabVC = segue.destination as? CarrierTabBarController{
 				tabVC.counters = self.counters
+				tabVC.airportName = self.airportNameTF.text
+				tabVC.carrierName = self.carrierNameTF.text
 			}
 		}
     }
@@ -181,7 +199,9 @@ extension AirportDetailsViewController:UIPickerViewDelegate, UIPickerViewDataSou
 	
 	func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
 		if pickerView == self.airportPickerView{
-			self.airportNameTF.text = Array(self.airports.keys)[row]
+			if self.airports.keys.count>0{
+				self.airportNameTF.text = Array(self.airports.keys)[row]
+			}
 		}
 		else if pickerView == self.carrierPickerView{
 			if let carriers = self.airports[self.airportNameTF.text!]{

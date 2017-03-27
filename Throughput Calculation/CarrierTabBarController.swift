@@ -11,6 +11,9 @@ import UIKit
 class CarrierTabBarController: UITabBarController {
 
 	var counters:[Counter]! = []
+	let appDelegate = UIApplication.shared.delegate as! AppDelegate
+	var airportName:String! = ""
+	var carrierName:String! = ""
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +23,16 @@ class CarrierTabBarController: UITabBarController {
 		if let queueVC = self.childViewControllers[1] as? QueueDisplayViewController{
 			queueVC.counters = self.counters
 		}
+		if let queueVC = self.childViewControllers[1] as? AnimatedQueueDisplayViewController{
+			queueVC.counters = self.counters
+			queueVC.airportName = self.airportName
+			queueVC.carrierName = self.carrierName
+		}
+		
+		if let mapVC = self.childViewControllers[0] as? MapViewController{
+			mapVC.airportName = airportName
+		}
+		
     }
 
     override func didReceiveMemoryWarning() {

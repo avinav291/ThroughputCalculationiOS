@@ -44,9 +44,16 @@
 		2EA426FA1E850F810002AF43 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA426F91E850F810002AF43 /* Counter.swift */; };
 		2EA426FC1E8511450002AF43 /* CarrierTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA426FB1E8511450002AF43 /* CarrierTabBarController.swift */; };
 		2EA426FE1E851B5B0002AF43 /* MKLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA426FD1E851B5B0002AF43 /* MKLabel.swift */; };
+		2EE5FE151E87B8FC00470A97 /* MyScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE5FE141E87B8FC00470A97 /* MyScene.swift */; };
+		2EE5FE171E87B90800470A97 /* CapGuy.atlasc in Resources */ = {isa = PBXBuildFile; fileRef = 2EE5FE161E87B90800470A97 /* CapGuy.atlasc */; };
+		2EE5FE191E87B92600470A97 /* CapGuy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE5FE181E87B92600470A97 /* CapGuy.swift */; };
+		2EE5FE1B1E87B99800470A97 /* AnimatedQueueDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE5FE1A1E87B99800470A97 /* AnimatedQueueDisplayViewController.swift */; };
+		2EEC3BC91E8954A600DFCF2C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2EEC3BC81E8954A600DFCF2C /* GoogleService-Info.plist */; };
+		4F1253D5EEB754C9B503E01F /* Pods_Throughput_Calculation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26D4FDC61FC80FBF2E814719 /* Pods_Throughput_Calculation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		26D4FDC61FC80FBF2E814719 /* Pods_Throughput_Calculation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Throughput_Calculation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E2817281E844BCD00069BCA /* QueueDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueDisplayViewController.swift; sourceTree = "<group>"; };
 		2E28172A1E845AF700069BCA /* AirportDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportDetailsViewController.swift; sourceTree = "<group>"; };
 		2E28172C1E845BF600069BCA /* MKButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKButton.swift; sourceTree = "<group>"; };
@@ -84,6 +91,13 @@
 		2EA426F91E850F810002AF43 /* Counter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		2EA426FB1E8511450002AF43 /* CarrierTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarrierTabBarController.swift; sourceTree = "<group>"; };
 		2EA426FD1E851B5B0002AF43 /* MKLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MKLabel.swift; path = ../MKLabel.swift; sourceTree = "<group>"; };
+		2EE5FE141E87B8FC00470A97 /* MyScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyScene.swift; sourceTree = "<group>"; };
+		2EE5FE161E87B90800470A97 /* CapGuy.atlasc */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CapGuy.atlasc; sourceTree = "<group>"; };
+		2EE5FE181E87B92600470A97 /* CapGuy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapGuy.swift; sourceTree = "<group>"; };
+		2EE5FE1A1E87B99800470A97 /* AnimatedQueueDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedQueueDisplayViewController.swift; sourceTree = "<group>"; };
+		2EEC3BC81E8954A600DFCF2C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6183041D5430A99D772242C0 /* Pods-Throughput Calculation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Throughput Calculation.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Throughput Calculation/Pods-Throughput Calculation.debug.xcconfig"; sourceTree = "<group>"; };
+		C985A8AA6D2C2E5B80E0AE4D /* Pods-Throughput Calculation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Throughput Calculation.release.xcconfig"; path = "Pods/Target Support Files/Pods-Throughput Calculation/Pods-Throughput Calculation.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +121,7 @@
 				2E2959C61E82F3A60083141A /* GoogleMaps.framework in Frameworks */,
 				2E2959C81E82F3B30083141A /* GoogleMapsCore.framework in Frameworks */,
 				2E2959C21E82F3740083141A /* GoogleMapsBase.framework in Frameworks */,
+				4F1253D5EEB754C9B503E01F /* Pods_Throughput_Calculation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,6 +157,7 @@
 				2E2959AC1E82F0BC0083141A /* Products */,
 				2E2959CB1E82F4200083141A /* Frameworks */,
 				2E2959E91E82F6320083141A /* Throughput Calculation-Bridging-Header.h */,
+				474D34BAECF3E6C90F30FB8C /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -156,6 +172,7 @@
 		2E2959AD1E82F0BC0083141A /* Throughput Calculation */ = {
 			isa = PBXGroup;
 			children = (
+				2EE5FE131E87B8E300470A97 /* SpriteKit Utlities */,
 				2E2817361E84F38300069BCA /* Custom SubViews */,
 				2E2817341E845C3B00069BCA /* Material Kit */,
 				2E2959EE1E82FF440083141A /* MapTasks.swift */,
@@ -164,9 +181,11 @@
 				2E2959B21E82F0BD0083141A /* Main.storyboard */,
 				2E28172A1E845AF700069BCA /* AirportDetailsViewController.swift */,
 				2E2817281E844BCD00069BCA /* QueueDisplayViewController.swift */,
+				2EE5FE1A1E87B99800470A97 /* AnimatedQueueDisplayViewController.swift */,
 				2E2959B51E82F0BD0083141A /* Images.xcassets */,
 				2E2959B71E82F0BD0083141A /* LaunchScreen.storyboard */,
 				2E2959BA1E82F0BD0083141A /* Info.plist */,
+				2EEC3BC81E8954A600DFCF2C /* GoogleService-Info.plist */,
 				2EA426F91E850F810002AF43 /* Counter.swift */,
 				2EA426FB1E8511450002AF43 /* CarrierTabBarController.swift */,
 			);
@@ -200,8 +219,28 @@
 				2E2959D01E82F4430083141A /* CoreGraphics.framework */,
 				2E2959CE1E82F4290083141A /* CoreData.framework */,
 				2E2959CC1E82F4200083141A /* Accelerate.framework */,
+				26D4FDC61FC80FBF2E814719 /* Pods_Throughput_Calculation.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2EE5FE131E87B8E300470A97 /* SpriteKit Utlities */ = {
+			isa = PBXGroup;
+			children = (
+				2EE5FE181E87B92600470A97 /* CapGuy.swift */,
+				2EE5FE161E87B90800470A97 /* CapGuy.atlasc */,
+				2EE5FE141E87B8FC00470A97 /* MyScene.swift */,
+			);
+			name = "SpriteKit Utlities";
+			sourceTree = "<group>";
+		};
+		474D34BAECF3E6C90F30FB8C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6183041D5430A99D772242C0 /* Pods-Throughput Calculation.debug.xcconfig */,
+				C985A8AA6D2C2E5B80E0AE4D /* Pods-Throughput Calculation.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,9 +250,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2E2959BD1E82F0BD0083141A /* Build configuration list for PBXNativeTarget "Throughput Calculation" */;
 			buildPhases = (
+				5294329D1532694F4BE28D5A /* [CP] Check Pods Manifest.lock */,
 				2E2959A71E82F0BC0083141A /* Sources */,
 				2E2959A81E82F0BC0083141A /* Frameworks */,
 				2E2959A91E82F0BC0083141A /* Resources */,
+				706284CF501689B3CFD37C06 /* [CP] Embed Pods Frameworks */,
+				41E75276A9FCB60E876A4A40 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -267,10 +309,12 @@
 			files = (
 				2E2959E61E82F5600083141A /* GoogleMapsCore.framework in Resources */,
 				2E28173A1E84F3E400069BCA /* BoardView.xib in Resources */,
+				2EE5FE171E87B90800470A97 /* CapGuy.atlasc in Resources */,
 				2E2959E71E82F5600083141A /* GoogleMaps.framework in Resources */,
 				2E2959E81E82F5600083141A /* GoogleMapsBase.framework in Resources */,
 				2E2959B91E82F0BD0083141A /* LaunchScreen.storyboard in Resources */,
 				2E2959B61E82F0BD0083141A /* Images.xcassets in Resources */,
+				2EEC3BC91E8954A600DFCF2C /* GoogleService-Info.plist in Resources */,
 				2E2959B41E82F0BD0083141A /* Main.storyboard in Resources */,
 				2E2959CA1E82F3F40083141A /* GoogleMaps.bundle in Resources */,
 			);
@@ -278,11 +322,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		41E75276A9FCB60E876A4A40 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Throughput Calculation/Pods-Throughput Calculation-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5294329D1532694F4BE28D5A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		706284CF501689B3CFD37C06 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Throughput Calculation/Pods-Throughput Calculation-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2E2959A71E82F0BC0083141A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EE5FE1B1E87B99800470A97 /* AnimatedQueueDisplayViewController.swift in Sources */,
 				2E2959EF1E82FF440083141A /* MapTasks.swift in Sources */,
 				2E2959B11E82F0BC0083141A /* MapViewController.swift in Sources */,
 				2EA426FA1E850F810002AF43 /* Counter.swift in Sources */,
@@ -294,7 +387,9 @@
 				2E2817311E845BF600069BCA /* MKTextField.swift in Sources */,
 				2EA426FC1E8511450002AF43 /* CarrierTabBarController.swift in Sources */,
 				2E28173C1E84F58B00069BCA /* BoardView.swift in Sources */,
+				2EE5FE191E87B92600470A97 /* CapGuy.swift in Sources */,
 				2E28172B1E845AF700069BCA /* AirportDetailsViewController.swift in Sources */,
+				2EE5FE151E87B8FC00470A97 /* MyScene.swift in Sources */,
 				2E2959AF1E82F0BC0083141A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -414,6 +509,7 @@
 		};
 		2E2959BE1E82F0BD0083141A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6183041D5430A99D772242C0 /* Pods-Throughput Calculation.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -436,6 +532,7 @@
 		};
 		2E2959BF1E82F0BD0083141A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C985A8AA6D2C2E5B80E0AE4D /* Pods-Throughput Calculation.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
