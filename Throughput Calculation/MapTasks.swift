@@ -116,31 +116,33 @@ class MapTasks: NSObject {
 					let directionsData = NSData(contentsOf: directionsURL! as URL)
 					
 					do{
-						let dictionary = try JSONSerialization.jsonObject(with: directionsData! as Data, options: .mutableContainers) as! [String:Any]
-						let status = dictionary["status"] as! String
+						if let dictionary = try JSONSerialization.jsonObject(with: directionsData! as Data, options: .mutableContainers) as? [String:Any] {
+							let status = dictionary["status"] as! String
+							
+							if status == "OK" {
+								self.selectedRoute = (dictionary["routes"] as! [[String:Any]])[0]
+								self.overviewPolyline = self.selectedRoute["overview_polyline"] as! [String:Any]
+								
+								let legs = self.selectedRoute["legs"] as! [[String:Any]]
+								
+								let startLocationDictionary = legs[0]["start_location"] as! [String:Any]
+								self.originCoordinate = CLLocationCoordinate2DMake(startLocationDictionary["lat"] as! Double, startLocationDictionary["lng"] as! Double)
+								
+								let endLocationDictionary = legs[legs.count - 1]["end_location"] as! [String:Any]
+								self.destinationCoordinate = CLLocationCoordinate2DMake(endLocationDictionary["lat"] as! Double, endLocationDictionary["lng"] as! Double)
+								
+								self.originAddress = legs[0]["start_address"] as! String
+								self.destinationAddress = legs[legs.count - 1]["end_address"] as! String
+								
+								self.calculateTotalDistanceAndDuration()
+								
+								completionHandler(status, true)
+							}
+							else {
+								completionHandler(status, false)
+							}
+						}
 						
-						if status == "OK" {
-							self.selectedRoute = (dictionary["routes"] as! [[String:Any]])[0]
-							self.overviewPolyline = self.selectedRoute["overview_polyline"] as! [String:Any]
-							
-							let legs = self.selectedRoute["legs"] as! [[String:Any]]
-							
-							let startLocationDictionary = legs[0]["start_location"] as! [String:Any]
-							self.originCoordinate = CLLocationCoordinate2DMake(startLocationDictionary["lat"] as! Double, startLocationDictionary["lng"] as! Double)
-							
-							let endLocationDictionary = legs[legs.count - 1]["end_location"] as! [String:Any]
-							self.destinationCoordinate = CLLocationCoordinate2DMake(endLocationDictionary["lat"] as! Double, endLocationDictionary["lng"] as! Double)
-							
-							self.originAddress = legs[0]["start_address"] as! String
-							self.destinationAddress = legs[legs.count - 1]["end_address"] as! String
-							
-							self.calculateTotalDistanceAndDuration()
-							
-							completionHandler(status, true)
-						}
-						else {
-							completionHandler(status, false)
-						}
 					}
 					catch{
 						completionHandler("NOT OK", false)

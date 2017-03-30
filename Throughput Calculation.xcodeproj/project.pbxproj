@@ -44,6 +44,7 @@
 		2EA426FA1E850F810002AF43 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA426F91E850F810002AF43 /* Counter.swift */; };
 		2EA426FC1E8511450002AF43 /* CarrierTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA426FB1E8511450002AF43 /* CarrierTabBarController.swift */; };
 		2EA426FE1E851B5B0002AF43 /* MKLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA426FD1E851B5B0002AF43 /* MKLabel.swift */; };
+		2ECF76F11E8A253A00288B20 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECF76F01E8A253A00288B20 /* DashboardViewController.swift */; };
 		2EE5FE151E87B8FC00470A97 /* MyScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE5FE141E87B8FC00470A97 /* MyScene.swift */; };
 		2EE5FE171E87B90800470A97 /* CapGuy.atlasc in Resources */ = {isa = PBXBuildFile; fileRef = 2EE5FE161E87B90800470A97 /* CapGuy.atlasc */; };
 		2EE5FE191E87B92600470A97 /* CapGuy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE5FE181E87B92600470A97 /* CapGuy.swift */; };
@@ -91,6 +92,7 @@
 		2EA426F91E850F810002AF43 /* Counter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		2EA426FB1E8511450002AF43 /* CarrierTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarrierTabBarController.swift; sourceTree = "<group>"; };
 		2EA426FD1E851B5B0002AF43 /* MKLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MKLabel.swift; path = ../MKLabel.swift; sourceTree = "<group>"; };
+		2ECF76F01E8A253A00288B20 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		2EE5FE141E87B8FC00470A97 /* MyScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyScene.swift; sourceTree = "<group>"; };
 		2EE5FE161E87B90800470A97 /* CapGuy.atlasc */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CapGuy.atlasc; sourceTree = "<group>"; };
 		2EE5FE181E87B92600470A97 /* CapGuy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapGuy.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 		2E3553041E895AB300012ACC /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2ECF76F01E8A253A00288B20 /* DashboardViewController.swift */,
 				2E2959B01E82F0BC0083141A /* MapViewController.swift */,
 				2E28172A1E845AF700069BCA /* AirportDetailsViewController.swift */,
 				2E2817281E844BCD00069BCA /* QueueDisplayViewController.swift */,
@@ -407,6 +410,7 @@
 				2E28172B1E845AF700069BCA /* AirportDetailsViewController.swift in Sources */,
 				2EE5FE151E87B8FC00470A97 /* MyScene.swift in Sources */,
 				2E2959AF1E82F0BC0083141A /* AppDelegate.swift in Sources */,
+				2ECF76F11E8A253A00288B20 /* DashboardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -535,7 +539,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "Throughput Calculation/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -561,7 +565,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "Throughput Calculation/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-ObjC",
