@@ -41,6 +41,8 @@
 		2E2959E71E82F5600083141A /* GoogleMaps.framework in Resources */ = {isa = PBXBuildFile; fileRef = 2E2959C51E82F3A60083141A /* GoogleMaps.framework */; };
 		2E2959E81E82F5600083141A /* GoogleMapsBase.framework in Resources */ = {isa = PBXBuildFile; fileRef = 2E2959C11E82F3740083141A /* GoogleMapsBase.framework */; };
 		2E2959EF1E82FF440083141A /* MapTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2959EE1E82FF440083141A /* MapTasks.swift */; };
+		2E5C30C31E8CF654004072A8 /* walking_business_man.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5C30C11E8CF654004072A8 /* walking_business_man.swift */; };
+		2E5C30CB1E8D07B6004072A8 /* walking_business_png.atlasc in Resources */ = {isa = PBXBuildFile; fileRef = 2E5C30CA1E8D07B6004072A8 /* walking_business_png.atlasc */; };
 		2EA426FA1E850F810002AF43 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA426F91E850F810002AF43 /* Counter.swift */; };
 		2EA426FC1E8511450002AF43 /* CarrierTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA426FB1E8511450002AF43 /* CarrierTabBarController.swift */; };
 		2EA426FE1E851B5B0002AF43 /* MKLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA426FD1E851B5B0002AF43 /* MKLabel.swift */; };
@@ -89,6 +91,8 @@
 		2E2959E41E82F4FD0083141A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2E2959E91E82F6320083141A /* Throughput Calculation-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Throughput Calculation-Bridging-Header.h"; sourceTree = "<group>"; };
 		2E2959EE1E82FF440083141A /* MapTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTasks.swift; sourceTree = "<group>"; };
+		2E5C30C11E8CF654004072A8 /* walking_business_man.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = walking_business_man.swift; sourceTree = "<group>"; };
+		2E5C30CA1E8D07B6004072A8 /* walking_business_png.atlasc */ = {isa = PBXFileReference; lastKnownFileType = folder; path = walking_business_png.atlasc; sourceTree = "<group>"; };
 		2EA426F91E850F810002AF43 /* Counter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		2EA426FB1E8511450002AF43 /* CarrierTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarrierTabBarController.swift; sourceTree = "<group>"; };
 		2EA426FD1E851B5B0002AF43 /* MKLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MKLabel.swift; path = ../MKLabel.swift; sourceTree = "<group>"; };
@@ -246,6 +250,8 @@
 		2EE5FE131E87B8E300470A97 /* SpriteKit Utlities */ = {
 			isa = PBXGroup;
 			children = (
+				2E5C30CA1E8D07B6004072A8 /* walking_business_png.atlasc */,
+				2E5C30C11E8CF654004072A8 /* walking_business_man.swift */,
 				2EE5FE181E87B92600470A97 /* CapGuy.swift */,
 				2EE5FE161E87B90800470A97 /* CapGuy.atlasc */,
 				2EE5FE141E87B8FC00470A97 /* MyScene.swift */,
@@ -334,6 +340,7 @@
 				2E2959B91E82F0BD0083141A /* LaunchScreen.storyboard in Resources */,
 				2E2959B61E82F0BD0083141A /* Images.xcassets in Resources */,
 				2EEC3BC91E8954A600DFCF2C /* GoogleService-Info.plist in Resources */,
+				2E5C30CB1E8D07B6004072A8 /* walking_business_png.atlasc in Resources */,
 				2E2959B41E82F0BD0083141A /* Main.storyboard in Resources */,
 				2E2959CA1E82F3F40083141A /* GoogleMaps.bundle in Resources */,
 			);
@@ -402,6 +409,7 @@
 				2E2817331E845C2900069BCA /* MKColor.swift in Sources */,
 				2E2817301E845BF600069BCA /* MKLayer.swift in Sources */,
 				2E28172F1E845BF600069BCA /* MKButton.swift in Sources */,
+				2E5C30C31E8CF654004072A8 /* walking_business_man.swift in Sources */,
 				2EA426FE1E851B5B0002AF43 /* MKLabel.swift in Sources */,
 				2E2817311E845BF600069BCA /* MKTextField.swift in Sources */,
 				2EA426FC1E8511450002AF43 /* CarrierTabBarController.swift in Sources */,

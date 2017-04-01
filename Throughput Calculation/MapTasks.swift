@@ -113,10 +113,12 @@ class MapTasks: NSObject {
 				
 				DispatchQueue.main.async {
 					
-					let directionsData = NSData(contentsOf: directionsURL! as URL)
+					guard let directionsData = NSData(contentsOf: directionsURL! as URL) else{
+						return
+					}
 					
 					do{
-						if let dictionary = try JSONSerialization.jsonObject(with: directionsData! as Data, options: .mutableContainers) as? [String:Any] {
+						if let dictionary = try JSONSerialization.jsonObject(with: directionsData as Data, options: .mutableContainers) as? [String:Any] {
 							let status = dictionary["status"] as! String
 							
 							if status == "OK" {

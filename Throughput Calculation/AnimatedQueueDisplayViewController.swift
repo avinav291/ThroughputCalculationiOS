@@ -73,6 +73,7 @@ class AnimatedQueueDisplayViewController: UIViewController {
 		ref.child("\(self.airportName!)/\(self.carrierName!)").observe(.value, with: { (snapshot) in
 //			print(snapshot.value!)
 			if let snap = snapshot.value as? NSArray{
+				print(snap)
 				self.counters = []
 				for lane in snap{
 					if let counter = lane as? [String:Any]{
