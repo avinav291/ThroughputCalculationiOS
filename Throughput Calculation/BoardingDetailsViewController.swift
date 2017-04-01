@@ -8,6 +8,8 @@
 
 import UIKit
 import QuartzCore
+import Firebase
+
 //
 //func delay(seconds: Double, completion:@escaping ()->()) {
 //	let popTime = DispatchTime.now() + Double(Int64( Double(NSEC_PER_SEC) * seconds )) / Double(NSEC_PER_SEC)
@@ -41,6 +43,12 @@ class BoardingDetailsViewController: UIViewController {
 	
 	var snowView: SnowView!
 	
+	var ref = FIRDatabase.database().reference()
+	
+	var airportName:String!
+	var carrierName:String!
+	var flightNo:String!
+	
 	//MARK: view controller methods
 	
 	override func viewDidLoad() {
@@ -59,6 +67,30 @@ class BoardingDetailsViewController: UIViewController {
 		
 		//start rotating the flights
 		changeFlightDataTo(londonToParis)
+	}
+	
+	func getFlightDetails(){
+		
+		ref.child("\(self.airportName!)/\(self.carrierName!)/flight/\(self.flightNo!)").observeSingleEvent(of: .value, with: { (snapshot) in
+			if let snap = snapshot.value as? [String:Any]{
+				
+				let dateFormatter = DateFormatter()
+				dateFormatter.timeStyle = .medium
+				dateFormatter.dateStyle = .long
+				
+				//				let timeInterval = TimeInterval(Double(snap["arrivalTime"] as! String)!/1000.0)
+				//				let timeInterval = (snap["arrivalTime"] as! TimeInterval)
+				//				let date = Date(timeIntervalSince1970: TimeInterval(Double(snap["arrivalTime"] as! String)!/1000.0))
+				
+				//				self.arrivalTimeLabel.text = dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(Double(snap["arrivalTime"] as! String)!/1000.0)))
+				
+				//				self.sourceLabel.text = snap["source"] as? String
+				//				self.destinationLabel.text = snap["destination"] as? String
+				//				self.arrivalTimeLabel.text = dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(Double(snap["arrivalTime"] as! String)!/1000.0)))
+				//				self.departureTimeLabel.text = dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(Double(snap["departureTime"] as! String)!/1000.0)))
+				//				self.boardingGateLabel.text = snap["boardingGate"] as? String
+			}
+		})
 	}
 	
 	//MARK: custom methods

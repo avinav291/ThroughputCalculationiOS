@@ -24,7 +24,14 @@ class CarrierTabBarController: UITabBarController {
 //		if let queueVC = self.childViewControllers[1] as? QueueDisplayViewController{
 //			queueVC.counters = self.counters
 //		}
-		if let queueVC = self.childViewControllers[1] as? AnimatedQueueDisplayViewController{
+		if let flightVC = self.childViewControllers[1] as? BoardingDetailsViewController{
+			flightVC.airportName = airportName
+			flightVC.carrierName = carrierName
+			flightVC.flightNo = flightNo
+		}
+
+		
+		if let queueVC = self.childViewControllers[2] as? AnimatedQueueDisplayViewController{
 //			queueVC.counters = self.counters
 			queueVC.airportName = self.airportName
 			queueVC.carrierName = self.carrierName

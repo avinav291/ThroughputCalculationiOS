@@ -81,14 +81,14 @@ class MapViewController: UIViewController {
 		self.getSmallestThroughputDetails()
 		
 		// Do any additional setup after loading the view, typically from a nib.
-		let camera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude: 48.857165, longitude: 2.354613, zoom: 8.0)
+		let camera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude: 25.435801, longitude: 81.846311, zoom: 8.0)
 		viewMap.camera = camera
 		self.locationManager.delegate = self
-		DispatchQueue.main.async {
+//		DispatchQueue.main.async {
 			self.locationManager.requestWhenInUseAuthorization()
 			self.locationManager.startUpdatingHeading()
 			self.viewMap.addObserver(self, forKeyPath: "myLocation", options: NSKeyValueObservingOptions.new, context: nil)
-		}
+//		}
 		viewMap.delegate = self
 	}
 	
@@ -477,6 +477,7 @@ extension MapViewController:CLLocationManagerDelegate, GMSMapViewDelegate{
 		}
 		return true
 	}
+	
 	
 	
 }
