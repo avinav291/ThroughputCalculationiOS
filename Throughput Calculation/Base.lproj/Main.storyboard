@@ -167,7 +167,15 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="74"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g9A-LV-suP">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="31"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9co-SY-O2t">
+                                                <rect key="frame" x="0.0" y="37" width="375" height="31"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
@@ -332,8 +340,9 @@
                         <outlet property="boardingGateLabel" destination="uoM-1k-6zo" id="BXD-O1-kLL"/>
                         <outlet property="departureTimeLabel" destination="27g-Et-Dh8" id="oBI-1E-git"/>
                         <outlet property="destinationLabel" destination="ZwL-xB-6jw" id="m9B-ZT-3dd"/>
-                        <outlet property="lblInfo" destination="g9A-LV-suP" id="5ZE-pU-3rY"/>
+                        <outlet property="distanceLabel" destination="g9A-LV-suP" id="09M-Tg-55G"/>
                         <outlet property="sourceLabel" destination="TMC-0W-EUG" id="01v-Zs-2vy"/>
+                        <outlet property="timeLabel" destination="9co-SY-O2t" id="4Bx-nF-f7x"/>
                         <outlet property="viewMap" destination="2S9-rm-aq2" id="brh-ip-7Ja"/>
                     </connections>
                 </viewController>
@@ -470,7 +479,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9Vw-b2-Mvm" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="WgB-s3-ndi">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="WgB-s3-ndi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

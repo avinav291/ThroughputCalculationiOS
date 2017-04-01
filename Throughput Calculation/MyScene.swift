@@ -104,7 +104,7 @@ class MyScene: SKScene
 //				let scalingFactor = min(90 / label.frame.width, 90 / label.frame.height)
 //				// Change the fontSize.
 //				label.fontName = UIFont(name: "", size: )
-				label.fontSize = 35.0
+				label.fontSize = 30.0
 //				label.text = "\(round((100*throughput)/100))"
 				label.fontColor = UIColor.black
 //				label.size = CGSize(width: 100, height: 70)
@@ -117,7 +117,7 @@ class MyScene: SKScene
 				addChild(sprite)
 			}
 			
-			label.text = "\(round((100*throughput)/100))"
+			label.text = "\(throughput)"
 			
 			for index in (self.lineNodes[laneNumber].count+1)...person{
 

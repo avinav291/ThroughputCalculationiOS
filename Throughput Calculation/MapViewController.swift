@@ -21,7 +21,8 @@ class MapViewController: UIViewController {
 	
 	@IBOutlet weak var bbFindAddress: UIBarButtonItem!
 	
-	@IBOutlet weak var lblInfo: UILabel!
+	@IBOutlet weak var distanceLabel: UILabel!
+	@IBOutlet weak var timeLabel: UILabel!
 	
 	let appDelegate = UIApplication.shared.delegate as! AppDelegate
 	
@@ -55,6 +56,9 @@ class MapViewController: UIViewController {
 	
 	var ref = FIRDatabase.database().reference()
 	
+	//Minimum Average Time
+	var minAvgTime:Double = 0.0
+	
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)
@@ -70,6 +74,7 @@ class MapViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.getFlightDetails()
+		self.getSmallestThroughputDetails()
 		
 		// Do any additional setup after loading the view, typically from a nib.
 		let camera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude: 48.857165, longitude: 2.354613, zoom: 8.0)
@@ -114,6 +119,25 @@ class MapViewController: UIViewController {
 				self.arrivalTimeLabel.text = dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(Double(snap["arrivalTime"] as! String)!/1000.0)))
 				self.departureTimeLabel.text = dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(Double(snap["departureTime"] as! String)!/1000.0)))
 				self.boardingGateLabel.text = snap["boardingGate"] as? String
+			}
+		})
+	}
+	
+	func getSmallestThroughputDetails(){
+		ref.child("\(self.airportName!)/\(self.carrierName!)/carrier").observe(.value, with: { (snapshot) in
+			//			print(snapshot.value!)
+			if let snap = snapshot.value as? NSArray{
+				//				print(snap)
+				self.minAvgTime = Double.infinity
+				for lane in snap{
+					if let counter = lane as? [String:Any]{
+						let counterTime:Double = Double(counter["avgWaitingTime"] as! String)!
+						if self.minAvgTime > counterTime{
+							self.minAvgTime = counterTime
+						}
+					}
+				}
+				self.displayRouteInfo()
 			}
 		})
 	}
@@ -326,7 +350,19 @@ class MapViewController: UIViewController {
 	}
 	
 	func displayRouteInfo() {
-		lblInfo.text = self.appDelegate.mapTasks.totalDistance + "\n" + self.appDelegate.mapTasks.totalDuration
+		self.distanceLabel.text = self.appDelegate.mapTasks.totalDistance
+//			+ "\n" + self.appDelegate.mapTasks.totalDuration
+		let totalTime = self.appDelegate.mapTasks.totalDurationInSeconds + UInt(self.minAvgTime*60)
+		let mins = totalTime / 60
+		let hours = mins / 60
+		let days = hours / 24
+		let remainingHours = hours % 24
+		let remainingMins = mins % 60
+		let remainingSecs = totalTime % 60
+		
+		let totalDuration = "Duration: \(days) d, \(remainingHours) h, \(remainingMins) mins, \(remainingSecs) secs"
+		
+		self.timeLabel.text = totalDuration
 	}
 	
 	func clearRoute() {
