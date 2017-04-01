@@ -30,14 +30,14 @@ class AnimatedQueueDisplayViewController: UIViewController {
 		
 		// Configure the view.
 		skView = self.imageContainerView as SKView
-		skView.showsFPS = true
-		skView.showsNodeCount = true
+//		skView.showsFPS = true
+//		skView.showsNodeCount = true
 		
 		// Sprite Kit applies additional optimizations to improve rendering performance
 		skView.ignoresSiblingOrder = true
 		
 		// Create and configure the scene. We use iPad dimensions, and crop the image on iPhone screen
-		scene = MyScene(size: CGSize(width: 768, height: 1024));
+		scene = MyScene(size: CGSize(width: 768, height: 900));
 		scene.scaleMode = .aspectFill
 		
 		skView.presentScene(scene)
@@ -66,14 +66,14 @@ class AnimatedQueueDisplayViewController: UIViewController {
 		let laneNumber = Int(self.laneNumberTF.text!)!
 		let people = Int(self.lanePeopleTF.text!)!
 		
-		self.scene.updateNodesToLine(laneNumber: laneNumber, people: people)
+//		self.scene.updateNodesToLine(laneNumber: laneNumber, people: people, throughput: <#Double#>)
 	}
 	
 	func getDetails(){
 		ref.child("\(self.airportName!)/\(self.carrierName!)/carrier").observe(.value, with: { (snapshot) in
-			print(snapshot.value!)
+//			print(snapshot.value!)
 			if let snap = snapshot.value as? NSArray{
-				print(snap)
+//				print(snap)
 				self.counters = []
 				for lane in snap{
 					if let counter = lane as? [String:Any]{
@@ -133,9 +133,10 @@ class AnimatedQueueDisplayViewController: UIViewController {
 	
 	func updateSKScene(){
 		for counter in self.counters{
-			let laneNumber = counter.counterNumber
-			let people = counter.counterCount
-			self.scene.updateNodesToLine(laneNumber: laneNumber, people: people)
+//			let laneNumber = counter.counterNumber
+//			let people = counter.counterCount
+//			
+			self.scene.updateNodesToLine(laneNumber: counter.counterNumber, people: counter.counterCount, throughput: counter.throughput, avgWaitingTime: counter.avgWaitingTime)
 		}
 	}
 

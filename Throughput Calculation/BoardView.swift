@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import SpriteKit
 
 class BoardView: UIView {
 
-	@IBOutlet weak var timeLabel: UILabel!
+	@IBOutlet weak var timeLabel: SKLabelNode!
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

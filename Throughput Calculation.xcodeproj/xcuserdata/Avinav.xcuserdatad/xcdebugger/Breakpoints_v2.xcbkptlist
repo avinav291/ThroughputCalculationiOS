@@ -212,11 +212,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Throughput Calculation/MapViewController.swift"
-            timestampString = "512324688.065513"
+            timestampString = "512731939.108107"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
             landmarkName = "observeValue(forKeyPath:of:change:context:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -244,11 +244,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Throughput Calculation/MapViewController.swift"
-            timestampString = "512324688.065513"
+            timestampString = "512731939.108107"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "observeValue(forKeyPath:of:change:context:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -260,11 +260,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Throughput Calculation/MapViewController.swift"
-            timestampString = "512324688.065513"
+            timestampString = "512731939.108107"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "367"
-            endingLineNumber = "367"
+            startingLineNumber = "373"
+            endingLineNumber = "373"
             landmarkName = "didTapMyLocationButton(for:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -276,12 +276,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Throughput Calculation/MyScene.swift"
-            timestampString = "512672589.363246"
+            timestampString = "512738016.041218"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
-            landmarkName = "updateNodesToLine(laneNumber:people:)"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "updateNodesToLine(laneNumber:people:throughput:avgWaitingTime:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -292,12 +292,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Throughput Calculation/MyScene.swift"
-            timestampString = "512672589.363246"
+            timestampString = "512738016.041218"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
-            landmarkName = "updateNodesToLine(laneNumber:people:)"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "updateNodesToLine(laneNumber:people:throughput:avgWaitingTime:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

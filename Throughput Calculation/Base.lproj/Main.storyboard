@@ -171,7 +171,7 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
-                                                <color key="textColor" red="0.2039215714" green="0.28627452250000002" blue="0.36862745879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -379,51 +379,26 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="GDt-Rx-kqW" customClass="SKView">
-                                <rect key="frame" x="9" y="149" width="356" height="305"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="newCarpet" translatesAutoresizingMaskIntoConstraints="NO" id="JV6-rw-HYX">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <view contentMode="scaleAspectFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GDt-Rx-kqW" customClass="SKView">
+                                <rect key="frame" x="10" y="100" width="354" height="400"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rRc-eh-RtV">
-                                <rect key="frame" x="20" y="87" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6ow-5i-T3z">
-                                <rect key="frame" x="139" y="87" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ora-B1-d9a">
-                                <rect key="frame" x="290" y="87" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="AddNodesButtonPressed:" destination="nFc-uo-5hj" eventType="touchUpInside" id="hzS-Om-uv9"/>
-                                </connections>
-                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="GDt-Rx-kqW" firstAttribute="centerY" secondItem="tXM-P7-seL" secondAttribute="centerY" id="HwP-sm-WFS"/>
-                            <constraint firstItem="GDt-Rx-kqW" firstAttribute="centerX" secondItem="tXM-P7-seL" secondAttribute="centerX" id="J4L-b6-2EI"/>
-                            <constraint firstItem="Ws7-To-o9Q" firstAttribute="top" secondItem="GDt-Rx-kqW" secondAttribute="bottom" constant="100" id="ibz-8T-pnT"/>
-                            <constraint firstAttribute="trailing" secondItem="GDt-Rx-kqW" secondAttribute="trailing" constant="10" id="q0E-g5-mHG"/>
-                        </constraints>
+                        <color key="backgroundColor" red="0.0" green="0.61489737033843994" blue="0.87689650058746338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Queue" image="steering_wheel" id="JqW-bh-6C2"/>
                     <connections>
                         <outlet property="imageContainerView" destination="GDt-Rx-kqW" id="p7S-J4-oSP"/>
-                        <outlet property="laneNumberTF" destination="rRc-eh-RtV" id="91p-ew-aLI"/>
-                        <outlet property="lanePeopleTF" destination="6ow-5i-T3z" id="4Ud-Ax-hmg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g4M-No-BnG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-919" y="233"/>
+            <point key="canvasLocation" x="-919.20000000000005" y="232.53373313343329"/>
         </scene>
         <!--Dashboard View Controller-->
         <scene sceneID="kD3-DN-Ava">
@@ -438,7 +413,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg-sunny" translatesAutoresizingMaskIntoConstraints="NO" id="kap-Z4-A8u">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="-43" width="375" height="646"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg-sunny-cloud-1" translatesAutoresizingMaskIntoConstraints="NO" id="Rn5-VE-WWZ">
@@ -457,7 +432,7 @@
                                 <rect key="frame" x="20" y="356.5" width="115" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="App Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ov-nw-rWb">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Aero" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ov-nw-rWb">
                                 <rect key="frame" x="80.5" y="78.5" width="214.5" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="28"/>
@@ -514,7 +489,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="otw-Qg-Qqd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2586" y="-109"/>
+            <point key="canvasLocation" x="-2586.4000000000001" y="-109.29535232383809"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pi3-Sf-eOy">
@@ -549,6 +524,7 @@
         <image name="bg-sunny-cloud-4" width="115" height="50"/>
         <image name="directions" width="25" height="25"/>
         <image name="map" width="25" height="25"/>
+        <image name="newCarpet" width="650" height="650"/>
         <image name="steering_wheel" width="25" height="25"/>
     </resources>
 </document>

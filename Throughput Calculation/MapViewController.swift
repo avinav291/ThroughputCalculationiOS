@@ -60,9 +60,11 @@ class MapViewController: UIViewController {
 		let camera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude: 48.857165, longitude: 2.354613, zoom: 8.0)
 		viewMap.camera = camera
 		self.locationManager.delegate = self
-		locationManager.requestWhenInUseAuthorization()
-		locationManager.startUpdatingHeading()
-		viewMap.addObserver(self, forKeyPath: "myLocation", options: NSKeyValueObservingOptions.new, context: nil)
+		DispatchQueue.main.async {
+			self.locationManager.requestWhenInUseAuthorization()
+			self.locationManager.startUpdatingHeading()
+			self.viewMap.addObserver(self, forKeyPath: "myLocation", options: NSKeyValueObservingOptions.new, context: nil)
+		}
 		viewMap.delegate = self
 	}
 	
@@ -91,24 +93,28 @@ class MapViewController: UIViewController {
 
 	
 	func createRouteToAirport(origin:String!){
-		if airportName != nil{
-			if (self.routePolyline) != nil {
-				self.clearRoute()
+		
+		DispatchQueue.main.async {
+			if self.airportName != nil{
+				if (self.routePolyline) != nil {
+					self.clearRoute()
+				}
+				
+				let destination = self.airportName
+				
+				self.self.appDelegate.mapTasks.getDirections(origin: origin, destination: destination, waypoints: nil, travelMode: self.travelMode, completionHandler: { (status, success) -> Void in
+					if success {
+						self.configureMapAndMarkersForRoute()
+						self.drawRoute()
+						self.displayRouteInfo()
+					}
+					else {
+						print(status)
+					}
+				})
 			}
-
-			let destination = airportName
-			
-			self.self.appDelegate.mapTasks.getDirections(origin: origin, destination: destination, waypoints: nil, travelMode: self.travelMode, completionHandler: { (status, success) -> Void in
-				if success {
-					self.configureMapAndMarkersForRoute()
-					self.drawRoute()
-					self.displayRouteInfo()
-				}
-				else {
-					print(status)
-				}
-			})
 		}
+		
 	}
 	
 	// MARK: IBAction method implementation
