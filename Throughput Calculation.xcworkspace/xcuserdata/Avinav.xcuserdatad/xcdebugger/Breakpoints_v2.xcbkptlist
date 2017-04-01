@@ -70,7 +70,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Throughput Calculation/AnimatedQueueDisplayViewController.swift"
@@ -86,7 +86,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Throughput Calculation/AnimatedQueueDisplayViewController.swift"
@@ -99,14 +99,14 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Throughput_Calculation.AnimatedQueueDisplayViewController.getDetails () -&gt; ()"
                   moduleName = "Throughput Calculation"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/newuser/Documents/Smart%20India%20Hackathon%202017/iOS%20App/Throughput%20Calculation/Throughput%20Calculation/AnimatedQueueDisplayViewController.swift"
-                  timestampString = "512709561.281871"
+                  timestampString = "512718123.112973"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "73"
@@ -114,19 +114,275 @@
                   offsetFromSymbolStart = "22">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Throughput_Calculation.AnimatedQueueDisplayViewController.(getDetails () -&gt; ()).(closure #1)"
                   moduleName = "Throughput Calculation"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/newuser/Documents/Smart%20India%20Hackathon%202017/iOS%20App/Throughput%20Calculation/Throughput%20Calculation/AnimatedQueueDisplayViewController.swift"
-                  timestampString = "512709561.283762"
+                  timestampString = "512718123.115002"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "26">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Throughput Calculation/DashboardViewController.swift"
+            timestampString = "512730748.14846"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "232"
+            endingLineNumber = "232"
+            landmarkName = "findAirportsAndCarriers()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Throughput_Calculation.DashboardViewController.findAirportsAndCarriers () -&gt; ()"
+                  moduleName = "Throughput Calculation"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/newuser/Documents/Smart%20India%20Hackathon%202017/iOS%20App/Throughput%20Calculation/Throughput%20Calculation/DashboardViewController.swift"
+                  timestampString = "512719092.233646"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "216"
+                  endingLineNumber = "216"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Throughput_Calculation.DashboardViewController.(findAirportsAndCarriers () -&gt; ()).(closure #1)"
+                  moduleName = "Throughput Calculation"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/newuser/Documents/Smart%20India%20Hackathon%202017/iOS%20App/Throughput%20Calculation/Throughput%20Calculation/DashboardViewController.swift"
+                  timestampString = "512719092.235133"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "217"
+                  endingLineNumber = "217"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Throughput Calculation/DashboardViewController.swift"
+            timestampString = "512730748.14846"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "234"
+            endingLineNumber = "234"
+            landmarkName = "findAirportsAndCarriers()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Throughput Calculation/DashboardViewController.swift"
+            timestampString = "512730748.14846"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "253"
+            endingLineNumber = "253"
+            landmarkName = "findAirportsAndCarriers()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Throughput Calculation/DashboardViewController.swift"
+            timestampString = "512730748.14846"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "504"
+            endingLineNumber = "504"
+            landmarkName = "pickerView(_:numberOfRowsInComponent:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Throughput Calculation/DashboardViewController.swift"
+            timestampString = "512730748.14846"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "527"
+            endingLineNumber = "527"
+            landmarkName = "pickerView(_:titleForRow:forComponent:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Throughput Calculation/DashboardViewController.swift"
+            timestampString = "512730748.14846"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "515"
+            endingLineNumber = "515"
+            landmarkName = "pickerView(_:titleForRow:forComponent:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Throughput Calculation/DashboardViewController.swift"
+            timestampString = "512730748.14846"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "519"
+            endingLineNumber = "519"
+            landmarkName = "pickerView(_:titleForRow:forComponent:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Throughput Calculation/DashboardViewController.swift"
+            timestampString = "512730748.14846"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "476"
+            endingLineNumber = "476"
+            landmarkName = "textFieldDidEndEditing(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Throughput Calculation/AnimatedQueueDisplayViewController.swift"
+            timestampString = "512716901.588313"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "getDetails()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Throughput_Calculation.AnimatedQueueDisplayViewController.(getDetails () -&gt; ()).(closure #1)"
+                  moduleName = "Throughput Calculation"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/newuser/Documents/Smart%20India%20Hackathon%202017/iOS%20App/Throughput%20Calculation/Throughput%20Calculation/AnimatedQueueDisplayViewController.swift"
+                  timestampString = "512718123.1221"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "75"
                   endingLineNumber = "75"
-                  offsetFromSymbolStart = "19">
+                  offsetFromSymbolStart = "453">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Throughput_Calculation.AnimatedQueueDisplayViewController.(getDetails () -&gt; ()).(closure #1)"
+                  moduleName = "Throughput Calculation"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/newuser/Documents/Smart%20India%20Hackathon%202017/iOS%20App/Throughput%20Calculation/Throughput%20Calculation/AnimatedQueueDisplayViewController.swift"
+                  timestampString = "512718123.123462"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "75"
+                  endingLineNumber = "75"
+                  offsetFromSymbolStart = "941">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Throughput Calculation/DashboardViewController.swift"
+            timestampString = "512730748.14846"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "233"
+            endingLineNumber = "233"
+            landmarkName = "findAirportsAndCarriers()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Throughput_Calculation.DashboardViewController.(findAirportsAndCarriers () -&gt; ()).(closure #1)"
+                  moduleName = "Throughput Calculation"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/newuser/Documents/Smart%20India%20Hackathon%202017/iOS%20App/Throughput%20Calculation/Throughput%20Calculation/DashboardViewController.swift"
+                  timestampString = "512718123.126833"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "217"
+                  endingLineNumber = "217"
+                  offsetFromSymbolStart = "22">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Throughput_Calculation.DashboardViewController.(findAirportsAndCarriers () -&gt; ()).(closure #1)"
+                  moduleName = "Throughput Calculation"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/newuser/Documents/Smart%20India%20Hackathon%202017/iOS%20App/Throughput%20Calculation/Throughput%20Calculation/DashboardViewController.swift"
+                  timestampString = "512718123.128205"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "217"
+                  endingLineNumber = "217"
+                  offsetFromSymbolStart = "608">
                </Location>
             </Locations>
          </BreakpointContent>

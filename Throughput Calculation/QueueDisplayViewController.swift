@@ -18,7 +18,7 @@ class QueueDisplayViewController: UIViewController {
         super.viewDidLoad()
 		
 		for counter in counters{
-			self.positionImages(lineNumber: counter.counterNumber, lineCount: counter.counterCount, throughput: counter.throughput)
+			self.positionImages(lineNumber: counter.counterNumber, lineCount: counter.counterCount, throughput: Int(counter.throughput))
 		}
         // Do any additional setup after loading the view.
     }

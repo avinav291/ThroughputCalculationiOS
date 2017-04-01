@@ -40,16 +40,18 @@ class DashboardViewController: UIViewController, CAAnimationDelegate {
 	@IBOutlet var heading: UILabel!
 	@IBOutlet var airportNameTF: UITextField!
 	@IBOutlet var carrierNameTF: UITextField!
+	@IBOutlet var flightNoTF: UITextField!
 	
 	var counters : [Counter]! = []
-	var airports: [String:[String]] = [:]
+	var airports: [String:[String:[String]]] = [:]
 	
 	var airportPickerView  = UIPickerView()
 	var carrierPickerView  = UIPickerView()
+	var flightNoPickerView  = UIPickerView()
 	
 	let defaults = UserDefaults.standard
 	
-	var ref = FIRDatabase.database().reference()
+	var ref:FIRDatabaseReference!
 	
 	@IBOutlet var cloud1: UIImageView!
 	@IBOutlet var cloud2: UIImageView!
@@ -66,6 +68,12 @@ class DashboardViewController: UIViewController, CAAnimationDelegate {
 //	var statusPosition = CGPoint.zero
 	
 	let info = UILabel()
+	
+	convenience init() {
+		self.init()
+//		FIRDatabase.database().persistenceEnabled = true
+//		ref = FIRDatabase.database().reference()
+	}
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,8 +85,12 @@ class DashboardViewController: UIViewController, CAAnimationDelegate {
 		carrierPickerView.delegate = self
 		carrierPickerView.dataSource = self
 		
+		flightNoPickerView.dataSource = self
+		flightNoPickerView.delegate = self
+		
 		self.airportNameTF.inputView = airportPickerView
 		self.carrierNameTF.inputView = carrierPickerView
+		self.flightNoTF.inputView = flightNoPickerView
 		
 		//set up the UI
 		goButton.layer.cornerRadius = 8.0
@@ -90,17 +102,24 @@ class DashboardViewController: UIViewController, CAAnimationDelegate {
 		info.font = UIFont(name: "HelveticaNeue", size: 12.0)
 		info.textAlignment = .center
 		info.textColor = UIColor.white
-		info.text = "Tap to select your Airport and corresponding carrier"
+		info.text = "Tap to select your Airport, Carrier and corresponding flight"
 		view.insertSubview(info, belowSubview: goButton)
 		
     }
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)
+		
 		self.goButton.isEnabled = false
 		self.airportNameTF.text = ""
 		self.carrierNameTF.text = ""
+		self.flightNoTF.text = ""
 		//		self.findCarriers()
+//		FIRDatabase.database().persistenceEnabled = true
+		if !FIRDatabase.database().persistenceEnabled{
+			FIRDatabase.database().persistenceEnabled = true
+		}
+		ref = FIRDatabase.database().reference()
 		findAirportsAndCarriers()
 		
 	}
@@ -132,6 +151,10 @@ class DashboardViewController: UIViewController, CAAnimationDelegate {
 		
 		formGroup.setValue(carrierNameTF.layer, forKey: "layer")
 		formGroup.beginTime = CACurrentMediaTime() + 0.4
+		carrierNameTF.layer.add(formGroup, forKey: nil)
+		
+		formGroup.setValue(flightNoTF.layer, forKey: "layer")
+		formGroup.beginTime = CACurrentMediaTime() + 0.5
 		carrierNameTF.layer.add(formGroup, forKey: nil)
 		
 		let fadeIn = CABasicAnimation(keyPath: "opacity")
@@ -192,6 +215,7 @@ class DashboardViewController: UIViewController, CAAnimationDelegate {
 		
 		airportNameTF.delegate = self
 		carrierNameTF.delegate = self
+		flightNoTF.delegate = self
 		
 	}
 
@@ -206,16 +230,29 @@ class DashboardViewController: UIViewController, CAAnimationDelegate {
 	func findAirportsAndCarriers(){
 		
 		self.ref.observeSingleEvent(of: .value, with: { (snapshot) in
-			if let dict = snapshot.value as? [String:Any]{
-				for key in dict.keys{
-					var carriers : [String] = []
-					if let carrier = dict[key] as? [String:Any]{
-						carriers += Array(carrier.keys)
+			if let dict = snapshot.value as? [String:[String:[String:Any]]]{
+				for airport in dict.keys{
+					self.airports[airport] = [:]
+//					self.airports = Map(Array(dict.keys),[])
+//					var carriersArray : [String:[String]] = [:]
+					if let carriers = dict[airport]{
+//						carriersArray += Array(carriers.keys)
+						for carrier in carriers.keys{
+							self.airports[airport]?[carrier] = []
+							if let flights = carriers[carrier]?["flight"] as? [String:Any]{
+								self.airports[airport]?[carrier] = []
+								for flight in flights.keys{
+									self.airports[airport]?[carrier]?.append(flight)
+								}
+							}
+						}
 					}
-					self.airports[key] = carriers
+					
+					//TODO:- Get the flight No
 				}
 				self.airportPickerView.reloadAllComponents()
 				self.carrierPickerView.reloadAllComponents()
+				self.flightNoPickerView.reloadAllComponents()
 			}
 		})
 	}
@@ -392,6 +429,7 @@ class DashboardViewController: UIViewController, CAAnimationDelegate {
 				//				tabVC.counters = self.counters
 				tabVC.airportName = self.airportNameTF.text
 				tabVC.carrierName = self.carrierNameTF.text
+				tabVC.flightNo = self.flightNoTF.text
 			}
 		}
 	}
@@ -435,7 +473,7 @@ extension DashboardViewController: UITextFieldDelegate {
 		}
 		else{
 			self.showBalloonAnimation()
-			if textField == self.carrierNameTF{
+			if textField == self.flightNoTF{
 				self.goButton.isEnabled = true
 			}
 		}
@@ -462,6 +500,14 @@ extension DashboardViewController:UIPickerViewDelegate, UIPickerViewDataSource{
 				return 0
 			}
 		}
+		else if pickerView == self.flightNoPickerView{
+			if let flights = self.airports[self.airportNameTF.text!]?[self.carrierNameTF.text!]{
+				return flights.count
+			}
+			else{
+				return 0
+			}
+		}
 		return 0
 	}
 	
@@ -471,10 +517,18 @@ extension DashboardViewController:UIPickerViewDelegate, UIPickerViewDataSource{
 		}
 		else if pickerView == self.carrierPickerView{
 			if let carriers = self.airports[self.airportNameTF.text!]{
-				return Array(carriers)[row]
+				return Array(carriers.keys)[row]
 			}
 			else{
 				return "Please Select an Airport"
+			}
+		}
+		else if pickerView == self.flightNoPickerView{
+			if let flights = self.airports[self.airportNameTF.text!]?[self.carrierNameTF.text!]{
+				return Array(flights)[row]
+			}
+			else{
+				return "Please Select a Carrier"
 			}
 		}
 		return ""
@@ -488,10 +542,18 @@ extension DashboardViewController:UIPickerViewDelegate, UIPickerViewDataSource{
 		}
 		else if pickerView == self.carrierPickerView{
 			if let carriers = self.airports[self.airportNameTF.text!]{
-				self.carrierNameTF.text = Array(carriers)[row]
+				self.carrierNameTF.text = Array(carriers.keys)[row]
 			}
 			else{
 				self.carrierNameTF.text = ""
+			}
+		}
+		else if pickerView == self.flightNoPickerView{
+			if let flights = self.airports[self.airportNameTF.text!]?[self.carrierNameTF.text!]{
+				self.flightNoTF.text = Array(flights)[row]
+			}
+			else{
+				self.flightNoTF.text =  ""
 			}
 		}
 		self.view.endEditing(true)

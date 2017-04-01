@@ -261,7 +261,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PAK" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gcz-yg-zmY">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AUS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gcz-yg-zmY">
                                                 <rect key="frame" x="10" y="31" width="50" height="36"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="50" id="zjx-O4-j6a"/>
@@ -270,7 +270,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pakistan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZwL-xB-6jw">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Australia" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZwL-xB-6jw">
                                                 <rect key="frame" x="102" y="5" width="223" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -319,21 +319,15 @@
                                     <constraint firstAttribute="height" constant="40" id="eFb-Qc-5Q6"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem image="location" id="uwx-zl-HGE">
-                                        <connections>
-                                            <action selector="findAddressWithSender:" destination="NmS-cG-9dJ" id="JZ7-55-elJ"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="wC9-o4-sFQ"/>
-                                    <barButtonItem image="directions" id="ncW-x1-FFC">
-                                        <connections>
-                                            <action selector="createRouteWithSender:" destination="NmS-cG-9dJ" id="FMI-kV-zSm"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem width="25" style="plain" systemItem="fixedSpace" id="dAW-hY-rbE"/>
                                     <barButtonItem image="steering_wheel" id="c4F-lo-T9t">
                                         <connections>
                                             <action selector="changeTravelModeWithSender:" destination="NmS-cG-9dJ" id="t9V-QB-sZw"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="wC9-o4-sFQ"/>
+                                    <barButtonItem image="directions" id="uwx-zl-HGE">
+                                        <connections>
+                                            <action selector="findAddressWithSender:" destination="NmS-cG-9dJ" id="JZ7-55-elJ"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="bDF-dh-VtE"/>
@@ -429,7 +423,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g4M-No-BnG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="20" y="331.48425787106447"/>
+            <point key="canvasLocation" x="-919" y="233"/>
         </scene>
         <!--Dashboard View Controller-->
         <scene sceneID="kD3-DN-Ava">
@@ -482,8 +476,14 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" keyboardType="alphabet" keyboardAppearance="light" enablesReturnKeyAutomatically="YES"/>
                             </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Flight Number" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6ND-KD-Hfn">
+                                <rect key="frame" x="47" y="215" width="281.5" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" keyboardType="alphabet" keyboardAppearance="light" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YDK-Qd-ySz">
-                                <rect key="frame" x="70" y="224" width="234.5" height="52"/>
+                                <rect key="frame" x="70" y="266" width="234.5" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.62745098040000002" green="0.83921568629999999" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="28"/>
@@ -506,6 +506,7 @@
                         <outlet property="cloud2" destination="5cP-3S-csw" id="cQL-OD-cSU"/>
                         <outlet property="cloud3" destination="mlY-q5-dxL" id="heG-cx-1R3"/>
                         <outlet property="cloud4" destination="YgY-gn-gkp" id="hMj-99-gF1"/>
+                        <outlet property="flightNoTF" destination="6ND-KD-Hfn" id="fqi-zn-JZ6"/>
                         <outlet property="goButton" destination="YDK-Qd-ySz" id="bcG-aC-Db6"/>
                         <outlet property="heading" destination="1Ov-nw-rWb" id="Io2-yP-1GC"/>
                         <segue destination="64o-30-noa" kind="show" identifier="showTabBarController" id="wKu-XR-uPu"/>
@@ -520,7 +521,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9Vw-b2-Mvm" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="WgB-s3-ndi">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="WgB-s3-ndi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -547,7 +548,6 @@
         <image name="bg-sunny-cloud-3" width="74" height="35"/>
         <image name="bg-sunny-cloud-4" width="115" height="50"/>
         <image name="directions" width="25" height="25"/>
-        <image name="location" width="25" height="25"/>
         <image name="map" width="25" height="25"/>
         <image name="steering_wheel" width="25" height="25"/>
     </resources>

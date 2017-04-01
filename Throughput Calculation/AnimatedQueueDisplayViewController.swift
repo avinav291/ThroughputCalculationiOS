@@ -70,14 +70,14 @@ class AnimatedQueueDisplayViewController: UIViewController {
 	}
 	
 	func getDetails(){
-		ref.child("\(self.airportName!)/\(self.carrierName!)").observe(.value, with: { (snapshot) in
-//			print(snapshot.value!)
+		ref.child("\(self.airportName!)/\(self.carrierName!)/carrier").observe(.value, with: { (snapshot) in
+			print(snapshot.value!)
 			if let snap = snapshot.value as? NSArray{
 				print(snap)
 				self.counters = []
 				for lane in snap{
 					if let counter = lane as? [String:Any]{
-						self.counters.append(Counter(throughput: Int(counter["throughput"] as! String)!, counterNumber: Int(counter["counterNumber"] as! String)!, counterCount: Int(counter["counterCount"] as! String)!))
+						self.counters.append(Counter(throughput: Double(counter["throughput"] as! String)!, counterNumber: Int(counter["counterNumber"] as! String)!, counterCount: Int(counter["counterCount"] as! String)!, avgWaitingTime: Double(counter["avgWaitingTime"] as! String)!))
 					}
 				}
 				self.updateSKScene()

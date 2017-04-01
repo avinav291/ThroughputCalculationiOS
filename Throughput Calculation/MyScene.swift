@@ -12,7 +12,8 @@ import SpriteKit
 class MyScene: SKScene
 {
     let sheet = CapGuy()
-    var sequence: SKAction?
+//	let sheet = walking_business_man()
+//    var sequence: SKAction?
 	var lineNodes:[[SKSpriteNode]]! = [[], [], [], []]
 	var walkAnim : SKAction!
     
@@ -33,6 +34,7 @@ class MyScene: SKScene
 		
         // in the first animation CapGuy walks from left to right, in the second one he turns from right to left
         let walk = SKAction.animate(with: sheet.capguy_walk(), timePerFrame: 0.033)
+//		let walk = SKAction.animate(with: sheet.walking_business_man(), timePerFrame: 0.033)
 //        let turn = SKAction.animate(with: sheet.capguy_turn(), timePerFrame: 0.033)
 
         // to walk over the complete iPad display, we have to repeat the animation
@@ -40,20 +42,20 @@ class MyScene: SKScene
         
         // we define two actions to move the sprite from left to right, and back;
 //        var moveRight = SKAction.moveTo(x: 900, duration: walkAnim.duration)
-		let moveRight = SKAction.moveBy(x: 100, y: -100, duration: walkAnim.duration)
+//		let moveRight = SKAction.moveBy(x: 100, y: -100, duration: walkAnim.duration)
 //        let moveLeft  = SKAction.moveTo(x: 100, duration: walkAnim.duration)
-		let moveLeft = SKAction.moveBy(x: -100, y: 100, duration: walkAnim.duration)
+//		let moveLeft = SKAction.moveBy(x: -100, y: 100, duration: walkAnim.duration)
         // as we have only an animation with the CapGuy walking from left to right, we use a 'scale' action
         // to get a mirrored animation.
-        let mirrorDirection = SKAction.scaleX(to: -1, y:1, duration:0.0)
-        let resetDirection  = SKAction.scaleX(to: 1,  y:1, duration:0.0);
-        
+//        let mirrorDirection = SKAction.scaleX(to: -1, y:1, duration:0.0)
+//        let resetDirection  = SKAction.scaleX(to: 1,  y:1, duration:0.0);
+		
         // Action within a group are executed in parallel:
 //        let walkAndMoveRight = SKAction.group([resetDirection,  walkAnim, moveRight]);
-        let walkAndMoveLeft  = SKAction.group([mirrorDirection, walkAnim, moveLeft]);
-        
+//        let walkAndMoveLeft  = SKAction.group([mirrorDirection, walkAnim, moveLeft]);
+		
         // now we combine the walk+turn actions into a sequence, and repeat it forever
-		sequence = SKAction.sequence([walkAndMoveLeft])
+//		sequence = SKAction.sequence([walkAndMoveLeft])
 //        sequence = SKAction.repeatForever(SKAction.sequence(walkAndMoveLeft));
     }
 
@@ -69,6 +71,11 @@ class MyScene: SKScene
 //    }
 	
 	func updateNodesToLine(laneNumber:Int, people:Int){
+		
+		//Return if the lane Number if greadter then 4
+		if laneNumber>4{
+			return
+		}
 		
 		let mirrorDirection = SKAction.scaleX(to: -1, y:1, duration:0.0)
 		
@@ -86,6 +93,7 @@ class MyScene: SKScene
 			for index in (self.lineNodes[laneNumber].count+1)...people{
 
 				let sprite = SKSpriteNode(texture: sheet.capguy_walk_0001())
+//				let sprite = SKSpriteNode(texture: sheet.frame_0_delay_0_04s())
 				sprite.position = CGPoint(x: CGFloat(200*(laneNumber)), y: 40)
 				let moveLeft = SKAction.moveBy(x: CGFloat(-100.0 + 40.0*Double(index)), y: CGFloat(500.0-50*Double(index)), duration:walkAnim.duration )
 				let walkAndMoveLeft  = SKAction.group([mirrorDirection, walkAnim, moveLeft]);
@@ -105,7 +113,7 @@ class MyScene: SKScene
 			for sprites in self.lineNodes[laneNumber]{
 				
 				let moveLeft = SKAction.moveBy(x: CGFloat(-40.0*Double(difference)), y: CGFloat(50*Double(difference)), duration:walkAnim.duration )
-				let walkAndMoveLeft  = SKAction.group([mirrorDirection, walkAnim, moveLeft]);
+				let walkAndMoveLeft  = SKAction.group([mirrorDirection ,walkAnim, moveLeft]);
 				sprites.run(walkAndMoveLeft)
 			}
 		}

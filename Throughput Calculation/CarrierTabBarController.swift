@@ -14,6 +14,7 @@ class CarrierTabBarController: UITabBarController {
 	let appDelegate = UIApplication.shared.delegate as! AppDelegate
 	var airportName:String! = ""
 	var carrierName:String! = ""
+	var flightNo:String! = ""
 	
     override func viewDidLoad() {
         super.viewDidLoad()

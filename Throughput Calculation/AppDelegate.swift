@@ -16,9 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	var mapTasks = MapTasks()
 	
 	override init(){
+		super.init()
 		FIRApp.configure()
 	}
-
+	
+//	var ref = FIRDatabase.database().reference()
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		// Override point for customization after application launch.

@@ -9,14 +9,16 @@
 import UIKit
 
 class Counter: NSObject {
-	var throughput:Int = 0
+	var throughput:Double = 0
 	var counterNumber:Int = 0
 	var counterCount:Int = 0
+	var avgWaitingTime:Double = 0
 	
-	init(throughput:Int, counterNumber:Int, counterCount:Int){
+	init(throughput:Double, counterNumber:Int, counterCount:Int, avgWaitingTime:Double){
 		super.init()
 		self.counterCount = counterCount
 		self.counterNumber = counterNumber
 		self.throughput = throughput
+		self.avgWaitingTime = avgWaitingTime
 	}
 }
