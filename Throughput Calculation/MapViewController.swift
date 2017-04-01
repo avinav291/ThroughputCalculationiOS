@@ -21,19 +21,20 @@ class MapViewController: UIViewController {
 	
 	@IBOutlet weak var bbFindAddress: UIBarButtonItem!
 	
-	@IBOutlet weak var distanceLabel: UILabel!
-	@IBOutlet weak var timeLabel: UILabel!
-	
 	let appDelegate = UIApplication.shared.delegate as! AppDelegate
 	
 	var locationMarker: GMSMarker!
 	
-	//Flight Label Markers
-	@IBOutlet weak var sourceLabel: UILabel!
-	@IBOutlet weak var destinationLabel: UILabel!
-	@IBOutlet weak var departureTimeLabel: UILabel!
-	@IBOutlet weak var arrivalTimeLabel: UILabel!
-	@IBOutlet weak var boardingGateLabel: UILabel!
+//	//Flight Label Markers
+//	@IBOutlet weak var sourceLabel: UILabel!
+//	@IBOutlet weak var destinationLabel: UILabel!
+//	@IBOutlet weak var departureTimeLabel: UILabel!
+//	@IBOutlet weak var arrivalTimeLabel: UILabel!
+//	@IBOutlet weak var boardingGateLabel: UILabel!
+	
+	@IBOutlet weak var distanceLabel: UILabel!
+	@IBOutlet weak var timeLabel: UILabel!
+	@IBOutlet weak var statusLabel: UILabel!
 	
 	
 	//Core Location Params
@@ -58,6 +59,9 @@ class MapViewController: UIViewController {
 	
 	//Minimum Average Time
 	var minAvgTime:Double = 0.0
+	var minCounter:Int = 0
+	
+	var isStatusDistanceBased = true
 	
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -114,11 +118,11 @@ class MapViewController: UIViewController {
 				
 //				self.arrivalTimeLabel.text = dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(Double(snap["arrivalTime"] as! String)!/1000.0)))
 				
-				self.sourceLabel.text = snap["source"] as? String
-				self.destinationLabel.text = snap["destination"] as? String
-				self.arrivalTimeLabel.text = dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(Double(snap["arrivalTime"] as! String)!/1000.0)))
-				self.departureTimeLabel.text = dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(Double(snap["departureTime"] as! String)!/1000.0)))
-				self.boardingGateLabel.text = snap["boardingGate"] as? String
+//				self.sourceLabel.text = snap["source"] as? String
+//				self.destinationLabel.text = snap["destination"] as? String
+//				self.arrivalTimeLabel.text = dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(Double(snap["arrivalTime"] as! String)!/1000.0)))
+//				self.departureTimeLabel.text = dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(Double(snap["departureTime"] as! String)!/1000.0)))
+//				self.boardingGateLabel.text = snap["boardingGate"] as? String
 			}
 		})
 	}
@@ -134,6 +138,7 @@ class MapViewController: UIViewController {
 						let counterTime:Double = Double(counter["avgWaitingTime"] as! String)!
 						if self.minAvgTime > counterTime{
 							self.minAvgTime = counterTime
+							self.minCounter = Int(counter["counterNumber"] as! String)!
 						}
 					}
 				}
@@ -350,9 +355,18 @@ class MapViewController: UIViewController {
 	}
 	
 	func displayRouteInfo() {
-		self.distanceLabel.text = self.appDelegate.mapTasks.totalDistance
+		
+		self.distanceLabel.text = "\(self.appDelegate.mapTasks.totalDistanceInMeters/100) km"
+		
+		if self.appDelegate.mapTasks.totalDistanceInMeters<100{
+			self.isStatusDistanceBased = false
+		}
+		else{
+			self.isStatusDistanceBased = true
+		}
+		
 //			+ "\n" + self.appDelegate.mapTasks.totalDuration
-		let totalTime = self.appDelegate.mapTasks.totalDurationInSeconds + UInt(self.minAvgTime*60)
+		let totalTime = self.appDelegate.mapTasks.totalDurationInSeconds + UInt(self.minAvgTime*60) + UInt(45*60)
 		let mins = totalTime / 60
 		let hours = mins / 60
 		let days = hours / 24
@@ -360,7 +374,21 @@ class MapViewController: UIViewController {
 		let remainingMins = mins % 60
 		let remainingSecs = totalTime % 60
 		
-		let totalDuration = "Duration: \(days) d, \(remainingHours) h, \(remainingMins) mins, \(remainingSecs) secs"
+		if self.isStatusDistanceBased{
+			let timeInterval = Date.timeIntervalBetween1970AndReferenceDate - Double(totalTime)
+			let dateToLeave = Date(timeIntervalSince1970: timeInterval)
+//			let dateToLeave = Date(timeIntervalSinceNow: TimeInterval(totalTime))
+			let formatter = DateFormatter()
+			formatter.dateStyle = .none
+			formatter.timeStyle = .short
+			
+			self.statusLabel.text = "Leave before \(formatter.string(from: dateToLeave))"
+		}
+		else{
+			self.statusLabel.text = "Move to Counter \(self.minCounter)"
+		}
+		
+		let totalDuration = "\(days) d, \(remainingHours) h, \(remainingMins) mins, \(remainingSecs) secs"
 		
 		self.timeLabel.text = totalDuration
 	}

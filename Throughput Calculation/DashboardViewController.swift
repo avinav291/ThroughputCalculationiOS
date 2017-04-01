@@ -116,9 +116,9 @@ class DashboardViewController: UIViewController, CAAnimationDelegate {
 		self.flightNoTF.text = ""
 		//		self.findCarriers()
 //		FIRDatabase.database().persistenceEnabled = true
-		if !FIRDatabase.database().persistenceEnabled{
-			FIRDatabase.database().persistenceEnabled = true
-		}
+//		if !FIRDatabase.database().persistenceEnabled{
+//			FIRDatabase.database().persistenceEnabled = true
+//		}
 		ref = FIRDatabase.database().reference()
 		findAirportsAndCarriers()
 		

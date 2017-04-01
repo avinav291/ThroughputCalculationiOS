@@ -34,7 +34,7 @@ class MapTasks: NSObject {
  
 	var destinationAddress: String!
 	
-	var totalDistanceInMeters: UInt = 0
+	var totalDistanceInMeters: UInt = UInt.max
  
 	var totalDistance: String!
  
