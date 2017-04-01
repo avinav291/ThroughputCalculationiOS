@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 enum TravelModes: Int {
 	case driving
@@ -26,6 +27,14 @@ class MapViewController: UIViewController {
 	
 	var locationMarker: GMSMarker!
 	
+	//Flight Label Markers
+	@IBOutlet weak var sourceLabel: UILabel!
+	@IBOutlet weak var destinationLabel: UILabel!
+	@IBOutlet weak var departureTimeLabel: UILabel!
+	@IBOutlet weak var arrivalTimeLabel: UILabel!
+	@IBOutlet weak var boardingGateLabel: UILabel!
+	
+	
 	//Core Location Params
 	var locationManager = CLLocationManager()
  
@@ -38,9 +47,13 @@ class MapViewController: UIViewController {
 	var routePolyline: GMSPolyline!
 	
 	var airportName:String!
+	var carrierName:String!
+	var flightNo:String!
 	
 	//Travel Modes
 	var travelMode = TravelModes.driving
+	
+	var ref = FIRDatabase.database().reference()
 	
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -56,6 +69,8 @@ class MapViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		self.getFlightDetails()
+		
 		// Do any additional setup after loading the view, typically from a nib.
 		let camera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude: 48.857165, longitude: 2.354613, zoom: 8.0)
 		viewMap.camera = camera
@@ -76,6 +91,31 @@ class MapViewController: UIViewController {
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
+	}
+	
+	//MARK:- get flight Details
+	func getFlightDetails(){
+		
+		ref.child("\(self.airportName!)/\(self.carrierName!)/flight/\(self.flightNo!)").observeSingleEvent(of: .value, with: { (snapshot) in
+			if let snap = snapshot.value as? [String:Any]{
+				
+				let dateFormatter = DateFormatter()
+				dateFormatter.timeStyle = .medium
+				dateFormatter.dateStyle = .long
+				
+//				let timeInterval = TimeInterval(Double(snap["arrivalTime"] as! String)!/1000.0)
+//				let timeInterval = (snap["arrivalTime"] as! TimeInterval)
+//				let date = Date(timeIntervalSince1970: TimeInterval(Double(snap["arrivalTime"] as! String)!/1000.0))
+				
+//				self.arrivalTimeLabel.text = dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(Double(snap["arrivalTime"] as! String)!/1000.0)))
+				
+				self.sourceLabel.text = snap["source"] as? String
+				self.destinationLabel.text = snap["destination"] as? String
+				self.arrivalTimeLabel.text = dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(Double(snap["arrivalTime"] as! String)!/1000.0)))
+				self.departureTimeLabel.text = dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(Double(snap["departureTime"] as! String)!/1000.0)))
+				self.boardingGateLabel.text = snap["boardingGate"] as? String
+			}
+		})
 	}
 	
 	override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {

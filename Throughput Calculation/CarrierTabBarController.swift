@@ -32,6 +32,8 @@ class CarrierTabBarController: UITabBarController {
 		
 		if let mapVC = self.childViewControllers[0] as? MapViewController{
 			mapVC.airportName = airportName
+			mapVC.carrierName = carrierName
+			mapVC.flightNo = flightNo
 		}
 		
     }

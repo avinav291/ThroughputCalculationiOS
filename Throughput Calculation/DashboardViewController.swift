@@ -445,7 +445,7 @@ extension DashboardViewController: UITextFieldDelegate {
 		info.layer.removeAnimation(forKey: "infoappear")
 	}
 	func textFieldDidEndEditing(_ textField: UITextField) {
-		if textField.text?.characters.count < 5 {
+		if textField.text?.characters.count < 1 {
 			// add animations here
 			let jump = CASpringAnimation(keyPath: "position.y")
 			jump.initialVelocity = 100.0
