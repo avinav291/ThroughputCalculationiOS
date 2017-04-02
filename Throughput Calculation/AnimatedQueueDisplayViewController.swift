@@ -39,6 +39,10 @@ class AnimatedQueueDisplayViewController: UIViewController {
 		// Create and configure the scene. We use iPad dimensions, and crop the image on iPhone screen
 		scene = MyScene(size: CGSize(width: 768, height: 900));
 		scene.scaleMode = .aspectFill
+		scene.view?.allowsTransparency = true
+		scene.backgroundColor = UIColor.clear
+		
+		skView.allowsTransparency = true
 		
 		skView.presentScene(scene)
 		

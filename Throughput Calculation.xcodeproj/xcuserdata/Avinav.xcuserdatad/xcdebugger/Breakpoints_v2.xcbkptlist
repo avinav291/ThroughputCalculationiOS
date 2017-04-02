@@ -244,11 +244,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Throughput Calculation/MyScene.swift"
-            timestampString = "512738016.041218"
+            timestampString = "512786265.987113"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "updateNodesToLine(laneNumber:people:throughput:avgWaitingTime:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -260,11 +260,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Throughput Calculation/MyScene.swift"
-            timestampString = "512738016.041218"
+            timestampString = "512786265.987113"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
             landmarkName = "updateNodesToLine(laneNumber:people:throughput:avgWaitingTime:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -276,11 +276,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Throughput Calculation/AnimatedQueueDisplayViewController.swift"
-            timestampString = "512673141.707132"
+            timestampString = "512786336.671412"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
             landmarkName = "AnimatedQueueDisplayViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -292,11 +292,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Throughput Calculation/AnimatedQueueDisplayViewController.swift"
-            timestampString = "512673141.707132"
+            timestampString = "512786336.671412"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "AnimatedQueueDisplayViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -308,11 +308,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Throughput Calculation/AnimatedQueueDisplayViewController.swift"
-            timestampString = "512673141.707132"
+            timestampString = "512786336.671412"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
             landmarkName = "AnimatedQueueDisplayViewController"
             landmarkType = "3">
             <Locations>

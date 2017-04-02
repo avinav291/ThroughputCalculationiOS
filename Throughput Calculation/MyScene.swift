@@ -14,24 +14,26 @@ class MyScene: SKScene
     let sheet = CapGuy()
 //	let sheet = walking_business_man()
 //    var sequence: SKAction?
-	var lineNodes:[[SKSpriteNode]]! = [[], [], [], []]
+	var lineNodes:[[SKSpriteNode]]! = [[], [], [], [], []]
 	var walkAnim : SKAction!
-	var throughputLabel:[SKLabelNode] = [SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold")]
+	var throughputLabel:[SKLabelNode] = [SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold")]
     
     override func didMove(to view: SKView) {
         super.didMove(to: view)
 
         // load background image, and set anchor point to the bottom left corner (default: center of sprite)
-		let background = SKSpriteNode(texture: SKTexture(imageNamed: "newCarpet"));
-//        let background = SKSpriteNode(texture: sheet.Background());
-        background.anchorPoint = CGPoint(x: 0, y: 0)
-		background.size = self.size
-		background.position = CGPoint(x:0, y:0)
-		background.zPosition = -1
-        // add the background image to the SKScene; by default it is added to position 0,0 (bottom left corner) of the scene
-        addChild(background)
+//		let background = SKSpriteNode(texture: SKTexture(imageNamed: "newCarpet"));
+////        let background = SKSpriteNode(texture: sheet.Background());
+//        background.anchorPoint = CGPoint(x: 0, y: 0)
+//		background.size = self.size
+//		background.position = CGPoint(x:0, y:0)
+//		background.zPosition = -1
+//        // add the background image to the SKScene; by default it is added to position 0,0 (bottom left corner) of the scene
+//        addChild(background)
+		self.scene?.backgroundColor = SKColor.clear
+		view.backgroundColor = SKColor.clear
 		
-		view.backgroundColor = UIColor.clear
+//		view.backgroundColor = SKColor(hex:  Int(53663))
 //		view.backgroundColor = UIColor(patternImage: UIImage(named: "carpet")!)
 		
         // in the first animation CapGuy walks from left to right, in the second one he turns from right to left
@@ -75,7 +77,7 @@ class MyScene: SKScene
 	func updateNodesToLine(laneNumber:Int, people:Int, throughput:Double, avgWaitingTime:Double){
 		
 		//Return if the lane Number if greadter then 4
-		if laneNumber>4{
+		if laneNumber > 4{
 			return
 		}
 		var person = people

@@ -65,18 +65,51 @@ class BoardingDetailsViewController: UIViewController {
 		snowClipView.addSubview(snowView)
 		view.addSubview(snowClipView)
 		
-		//start rotating the flights
-		changeFlightDataTo(londonToParis)
+//		//start rotating the flights
+//		changeFlightDataTo(londonToParis)
+		self.getFlightDetails()
 	}
 	
 	func getFlightDetails(){
 		
-		ref.child("\(self.airportName!)/\(self.carrierName!)/flight/\(self.flightNo!)").observeSingleEvent(of: .value, with: { (snapshot) in
+		ref.child("\(self.airportName!)/\(self.carrierName!)/flight/\(self.flightNo!)").observe(.value, with: { (snapshot) in
 			if let snap = snapshot.value as? [String:Any]{
 				
 				let dateFormatter = DateFormatter()
 				dateFormatter.timeStyle = .medium
 				dateFormatter.dateStyle = .long
+				
+				let delayed = Double(snap["delayed"] as! String)!
+				
+				if delayed > 0.0{
+					let delayedFlight = FlightData(
+						summary: dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(Double(snap["departureTime"] as! String)!/1000.0))),
+						flightNr: self.flightNo,
+						gateNr: snap["boardingGate"] as! String,
+						departingFrom: snap["source"] as! String,
+						arrivingTo: snap["destination"] as! String,
+						weatherImageName: "bg-sunny",
+						showWeatherEffects: false,
+						isTakingOff: false,
+						flightStatus: "Delayed by \(Int(delayed/60)) mins")
+					self.changeFlightDataTo(delayedFlight, animated: true)
+				}
+				else{
+					let flight = FlightData(
+						summary: dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(Double(snap["departureTime"] as! String)!/1000.0))),
+						flightNr: self.flightNo,
+						gateNr: snap["boardingGate"] as! String,
+						departingFrom: snap["source"] as! String,
+						arrivingTo: snap["destination"] as! String,
+						weatherImageName: "bg-snowy",
+						showWeatherEffects: true,
+						isTakingOff: true,
+						flightStatus: "Boarding")
+					self.changeFlightDataTo(flight, animated: true)
+				}
+				
+				
+				
 				
 				//				let timeInterval = TimeInterval(Double(snap["arrivalTime"] as! String)!/1000.0)
 				//				let timeInterval = (snap["arrivalTime"] as! TimeInterval)
@@ -142,10 +175,10 @@ class BoardingDetailsViewController: UIViewController {
 			flightStatus.text = data.flightStatus
 		}
 		
-		// schedule next flight
-		delay(seconds: 3.0) {
-			self.changeFlightDataTo(data.isTakingOff ? parisToRome : londonToParis, animated: true)
-		}
+//		// schedule next flight
+//		delay(seconds: 3.0) {
+//			self.changeFlightDataTo(data.isTakingOff ? parisToRome : londonToParis, animated: true)
+//		}
 		
 	}
 	
