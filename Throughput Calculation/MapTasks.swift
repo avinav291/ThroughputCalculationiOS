@@ -168,10 +168,9 @@ class MapTasks: NSObject {
 		totalDistanceInMeters = 0
 		totalDurationInSeconds = 0
 		
-		for leg in legs {
-			totalDistanceInMeters += (leg["distance"] as! [String:Any])["value"] as! UInt
-			totalDurationInSeconds += (leg["duration"] as! [String:Any])["value"] as! UInt
-		}
+//		for leg in legs {
+		totalDistanceInMeters = (legs[0]["distance"] as! [String:Any])["value"] as! UInt
+		totalDurationInSeconds = (legs[0]["duration"] as! [String:Any])["value"] as! UInt
 		
 		
 		let distanceInKilometers: Double = Double(totalDistanceInMeters / 1000)

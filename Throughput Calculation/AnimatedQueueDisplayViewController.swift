@@ -12,8 +12,7 @@ import Firebase
 
 class AnimatedQueueDisplayViewController: UIViewController {
 	
-	@IBOutlet weak var laneNumberTF: UITextField!
-	@IBOutlet weak var lanePeopleTF: UITextField!
+	@IBOutlet weak var moveToLabel: UILabel!
 	@IBOutlet weak var imageContainerView: SKView!
 	var counters : [Counter] = []
 	var airportName:String! = ""
@@ -21,6 +20,8 @@ class AnimatedQueueDisplayViewController: UIViewController {
 	var skView:SKView!
 	var scene:MyScene!
 	let defaults = UserDefaults.standard
+	
+	var minCounter:Int! = 0
 	
 	var ref = FIRDatabase.database().reference()
 
@@ -64,31 +65,49 @@ class AnimatedQueueDisplayViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 	
-	
-    
-	@IBAction func AddNodesButtonPressed(_ sender: Any) {
-		let laneNumber = Int(self.laneNumberTF.text!)!
-		let people = Int(self.lanePeopleTF.text!)!
-		
-//		self.scene.updateNodesToLine(laneNumber: laneNumber, people: people, throughput: <#Double#>)
-	}
-	
 	func getDetails(){
 		ref.child("\(self.airportName!)/\(self.carrierName!)/carrier").observe(.value, with: { (snapshot) in
 //			print(snapshot.value!)
 			if let snap = snapshot.value as? NSArray{
 //				print(snap)
 				self.counters = []
+				var minAvgTime = Double.infinity
 				for lane in snap{
 					if let counter = lane as? [String:Any]{
 						self.counters.append(Counter(throughput: Double(counter["throughput"] as! String)!, counterNumber: Int(counter["counterNumber"] as! String)!, counterCount: Int(counter["counterCount"] as! String)!, avgWaitingTime: Double(counter["avgWaitingTime"] as! String)!))
+						let counterTime:Double = Double(counter["avgWaitingTime"] as! String)!
+						if minAvgTime > counterTime{
+							minAvgTime = counterTime
+							self.minCounter = Int(counter["counterNumber"] as! String)!
+						}
 					}
 				}
 				self.updateSKScene()
+				self.moveToLabel.text = "Move To Counter \(self.minCounter!)"
 			}
 		})
 	}
 	
+//	func getSmallestThroughputDetails(){
+//		ref.child("\(self.airportName!)/\(self.carrierName!)/carrier").observe(.value, with: { (snapshot) in
+//			//			print(snapshot.value!)
+//			if let snap = snapshot.value as? NSArray{
+//				//				print(snap)
+//				var minAvgTime = Double.infinity
+//				for lane in snap{
+//					if let counter = lane as? [String:Any]{
+//						let counterTime:Double = Double(counter["avgWaitingTime"] as! String)!
+//						if minAvgTime > counterTime{
+//							minAvgTime = counterTime
+//							self.minCounter = Int(counter["counterNumber"] as! String)!
+//						}
+//					}
+//				}
+//				self.displayRouteInfo()
+//			}
+//		})
+//	}
+//	
 //	func getDetails(){
 //		let airportName = self.airportName
 //		let carrierName = self.carrierName

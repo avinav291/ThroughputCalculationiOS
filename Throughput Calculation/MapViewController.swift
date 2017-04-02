@@ -63,6 +63,8 @@ class MapViewController: UIViewController {
 	
 	var isStatusDistanceBased = true
 	
+	var arrivalTime:Date! = Date()
+	
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)
@@ -105,19 +107,20 @@ class MapViewController: UIViewController {
 	//MARK:- get flight Details
 	func getFlightDetails(){
 		
-		ref.child("\(self.airportName!)/\(self.carrierName!)/flight/\(self.flightNo!)").observeSingleEvent(of: .value, with: { (snapshot) in
+		ref.child("\(self.airportName!)/\(self.carrierName!)/flight/\(self.flightNo!)").observe(.value, with: { (snapshot) in
 			if let snap = snapshot.value as? [String:Any]{
 				
-				let dateFormatter = DateFormatter()
-				dateFormatter.timeStyle = .medium
-				dateFormatter.dateStyle = .long
-				
+//				let dateFormatter = DateFormatter()
+//				dateFormatter.timeStyle = .medium
+//				dateFormatter.dateStyle = .long
+//				
 //				let timeInterval = TimeInterval(Double(snap["arrivalTime"] as! String)!/1000.0)
 //				let timeInterval = (snap["arrivalTime"] as! TimeInterval)
 //				let date = Date(timeIntervalSince1970: TimeInterval(Double(snap["arrivalTime"] as! String)!/1000.0))
 				
-//				self.arrivalTimeLabel.text = dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(Double(snap["arrivalTime"] as! String)!/1000.0)))
+				self.arrivalTime = Date(timeIntervalSince1970: TimeInterval(Double(snap["arrivalTime"] as! String)!/1000.0))
 				
+				self.displayRouteInfo()
 //				self.sourceLabel.text = snap["source"] as? String
 //				self.destinationLabel.text = snap["destination"] as? String
 //				self.arrivalTimeLabel.text = dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(Double(snap["arrivalTime"] as! String)!/1000.0)))
@@ -356,7 +359,7 @@ class MapViewController: UIViewController {
 	
 	func displayRouteInfo() {
 		
-		self.distanceLabel.text = "\(self.appDelegate.mapTasks.totalDistanceInMeters/100) km"
+		self.distanceLabel.text = "\(self.appDelegate.mapTasks.totalDistanceInMeters/1000) km"
 		
 		if self.appDelegate.mapTasks.totalDistanceInMeters<100{
 			self.isStatusDistanceBased = false
@@ -375,7 +378,7 @@ class MapViewController: UIViewController {
 		let remainingSecs = totalTime % 60
 		
 		if self.isStatusDistanceBased{
-			let timeInterval = Date.timeIntervalBetween1970AndReferenceDate - Double(totalTime)
+			let timeInterval = self.arrivalTime.timeIntervalSince1970 - Double(totalTime)
 			let dateToLeave = Date(timeIntervalSince1970: timeInterval)
 //			let dateToLeave = Date(timeIntervalSinceNow: TimeInterval(totalTime))
 			let formatter = DateFormatter()
@@ -388,7 +391,21 @@ class MapViewController: UIViewController {
 			self.statusLabel.text = "Move to Counter \(self.minCounter)"
 		}
 		
-		let totalDuration = "\(days) d, \(remainingHours) h, \(remainingMins) mins, \(remainingSecs) secs"
+		var totalDuration = ""
+		if days > 0{
+			totalDuration.append("\(days) d ")
+		}
+		if remainingHours > 0{
+			totalDuration.append("\(remainingHours) h ")
+		}
+		if remainingMins > 0{
+			totalDuration.append("\(remainingMins) mins ")
+		}
+		if remainingSecs > 0{
+			totalDuration.append("\(remainingSecs) s")
+		}
+		
+//		let totalDuration = "\(days) d, \(remainingHours) h, \(remainingMins) mins, \(remainingSecs) secs"
 		
 		self.timeLabel.text = totalDuration
 	}

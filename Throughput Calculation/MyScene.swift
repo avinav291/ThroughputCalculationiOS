@@ -85,7 +85,7 @@ class MyScene: SKScene
 			person = 8
 		}
 		
-		let mirrorDirection = SKAction.scaleX(to: -1, y:1, duration:0.0)
+//		let mirrorDirection = SKAction.scaleX(to: -1, y:1, duration:0.0)
 		
 		//More People than existing
 		if self.lineNodes[laneNumber].count<person{
@@ -98,7 +98,7 @@ class MyScene: SKScene
 				//Image
 				let clock = SKSpriteNode(texture: SKTexture(imageNamed: "clock"))
 				clock.size = CGSize(width: 100, height: 100)
-				clock.position = CGPoint(x: CGFloat( 200.0*CGFloat(laneNumber) - 60.0), y: 800)
+				clock.position = CGPoint(x: CGFloat( 200.0*CGFloat(laneNumber) - 100.0), y: 800)
 				addChild(clock)
 				
 				//Image
@@ -110,12 +110,12 @@ class MyScene: SKScene
 //				label.text = "\(round((100*throughput)/100))"
 				label.fontColor = UIColor.black
 //				label.size = CGSize(width: 100, height: 70)
-				label.position = CGPoint(x: CGFloat( 200.0*CGFloat(laneNumber) - 60.0), y: 790)
+				label.position = CGPoint(x: CGFloat( 200.0*CGFloat(laneNumber) - 100.0), y: 790)
 				addChild(label)
 				
 				let sprite = SKSpriteNode(texture: SKTexture(imageNamed: "counter"))
-				sprite.size = CGSize(width: 100, height: 70)
-				sprite.position = CGPoint(x: CGFloat( 200.0*CGFloat(laneNumber) - 60.0), y: 700)
+				sprite.size = CGSize(width: 150, height: 70)
+				sprite.position = CGPoint(x: CGFloat( 200.0*CGFloat(laneNumber) - 100.0), y: 700)
 				addChild(sprite)
 			}
 			
@@ -123,12 +123,13 @@ class MyScene: SKScene
 			
 			for index in (self.lineNodes[laneNumber].count+1)...person{
 
-				let sprite = SKSpriteNode(texture: sheet.capguy_walk_0001())
+				let sprite = SKSpriteNode(texture: SKTexture(imageNamed: "person"))
+				sprite.size = CGSize(width: 50, height: 50)
 //				let sprite = SKSpriteNode(texture: sheet.frame_0_delay_0_04s())
-				sprite.position = CGPoint(x: CGFloat(200*(laneNumber))+100.0, y: 40)
-				let moveLeft = SKAction.moveBy(x: CGFloat(-200.0 + 40.0*Double(index)), y: CGFloat(600.0-50*Double(index)), duration:walkAnim.duration )
-				let walkAndMoveLeft  = SKAction.group([mirrorDirection, walkAnim, moveLeft]);
-				sprite.run(walkAndMoveLeft)
+				sprite.position = CGPoint(x: CGFloat(200.0*CGFloat(laneNumber) - 100.0), y: 40)
+				let moveLeft = SKAction.moveBy(x: 0, y: CGFloat(600.0-60*Double(index)), duration:0.5 )
+//				let walkAndMoveLeft  = SKAction.group([walkAnim, moveLeft]);
+				sprite.run(moveLeft)
 				self.lineNodes[laneNumber].append(sprite)
 				addChild(sprite)
 			}
@@ -143,9 +144,9 @@ class MyScene: SKScene
 			}
 			for sprites in self.lineNodes[laneNumber]{
 				
-				let moveLeft = SKAction.moveBy(x: CGFloat(-40.0*Double(difference)), y: CGFloat(50*Double(difference)), duration:walkAnim.duration )
-				let walkAndMoveLeft  = SKAction.group([mirrorDirection ,walkAnim, moveLeft]);
-				sprites.run(walkAndMoveLeft)
+				let moveLeft = SKAction.moveBy(x: CGFloat(0), y: CGFloat(60*Double(difference)), duration:walkAnim.duration )
+//				let walkAndMoveLeft  = SKAction.group([mirrorDirection ,walkAnim, moveLeft]);
+				sprites.run(moveLeft)
 			}
 		}
 	}
