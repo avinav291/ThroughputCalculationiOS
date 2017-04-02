@@ -118,7 +118,7 @@ class MapViewController: UIViewController {
 //				let timeInterval = (snap["arrivalTime"] as! TimeInterval)
 //				let date = Date(timeIntervalSince1970: TimeInterval(Double(snap["arrivalTime"] as! String)!/1000.0))
 				
-				self.arrivalTime = Date(timeIntervalSince1970: TimeInterval(Double(snap["arrivalTime"] as! String)!/1000.0))
+				self.arrivalTime = Date(timeIntervalSince1970: TimeInterval(Double(snap["departureTime"] as! String)!/1000.0))
 				
 				self.displayRouteInfo()
 //				self.sourceLabel.text = snap["source"] as? String
