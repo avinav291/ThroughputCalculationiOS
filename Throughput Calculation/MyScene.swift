@@ -17,6 +17,8 @@ class MyScene: SKScene
 	var lineNodes:[[SKSpriteNode]]! = [[], [], [], [], []]
 	var walkAnim : SKAction!
 	var throughputLabel:[SKLabelNode] = [SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold")]
+	var avgWaitingTimeLabel:[SKLabelNode] = [SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold")]
+	var extraPeopleLabel:[SKLabelNode] = [SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold")]
     
     override func didMove(to view: SKView) {
         super.didMove(to: view)
@@ -85,12 +87,13 @@ class MyScene: SKScene
 			person = 8
 		}
 		
+		let label = self.throughputLabel[laneNumber]
+		let waitTimelabel = self.avgWaitingTimeLabel[laneNumber]
+		let extraPeopleLbl = self.extraPeopleLabel[laneNumber]
 //		let mirrorDirection = SKAction.scaleX(to: -1, y:1, duration:0.0)
 		
 		//More People than existing
 		if self.lineNodes[laneNumber].count<person{
-			
-			let label = self.throughputLabel[laneNumber]
 			
 			if self.lineNodes[laneNumber].count == 0{
 				//Add the Counter
@@ -102,24 +105,47 @@ class MyScene: SKScene
 				addChild(clock)
 				
 				//Image
-				let label = self.throughputLabel[laneNumber]
+//				let label = self.throughputLabel[laneNumber]
 //				let scalingFactor = min(90 / label.frame.width, 90 / label.frame.height)
 //				// Change the fontSize.
 //				label.fontName = UIFont(name: "", size: )
-				label.fontSize = 30.0
-//				label.text = "\(round((100*throughput)/100))"
-				label.fontColor = UIColor.black
-//				label.size = CGSize(width: 100, height: 70)
-				label.position = CGPoint(x: CGFloat( 200.0*CGFloat(laneNumber) - 100.0), y: 790)
-				addChild(label)
+				
+				if label.parent == nil{
+					label.fontSize = 30.0
+					//				label.text = "\(round((100*throughput)/100))"
+					label.fontColor = UIColor.black
+					//				label.size = CGSize(width: 100, height: 70)
+					label.position = CGPoint(x: CGFloat( 200.0*CGFloat(laneNumber) - 100.0), y: 790)
+					addChild(label)
+				}
 				
 				let sprite = SKSpriteNode(texture: SKTexture(imageNamed: "counter"))
 				sprite.size = CGSize(width: 150, height: 70)
 				sprite.position = CGPoint(x: CGFloat( 200.0*CGFloat(laneNumber) - 100.0), y: 700)
 				addChild(sprite)
+				
+//				let waitTimelabel = self.avgWaitingTimeLabel[laneNumber]
+				
+//				addChild(waitTimelabel)
+				if waitTimelabel.parent == nil{
+					waitTimelabel.fontSize = 20.0
+					waitTimelabel.fontColor = UIColor.black
+					waitTimelabel.position = CGPoint(x: CGFloat( 200.0*CGFloat(laneNumber) - 100.0), y: 690)
+					addChild(waitTimelabel)
+				}
+				
+//				let extraPeopleLbl = self.extraPeopleLabel[laneNumber]
+				
+//				addChild(extraPeopleLbl)
+				if extraPeopleLbl.parent == nil{
+					extraPeopleLbl.fontSize = 30.0
+					extraPeopleLbl.fontColor = UIColor.black
+					extraPeopleLbl.position = CGPoint(x: CGFloat( 200.0*CGFloat(laneNumber) - 100.0), y: 20)
+					addChild(extraPeopleLbl)
+				}
+				
 			}
 			
-			label.text = "\(throughput)"
 			
 			for index in (self.lineNodes[laneNumber].count+1)...person{
 
@@ -144,11 +170,21 @@ class MyScene: SKScene
 			}
 			for sprites in self.lineNodes[laneNumber]{
 				
-				let moveLeft = SKAction.moveBy(x: CGFloat(0), y: CGFloat(60*Double(difference)), duration:walkAnim.duration )
+				let moveLeft = SKAction.moveBy(x: CGFloat(0), y: CGFloat(60*Double(difference)), duration:0.5)
 //				let walkAndMoveLeft  = SKAction.group([mirrorDirection ,walkAnim, moveLeft]);
 				sprites.run(moveLeft)
 			}
 		}
+		
+		label.text = "\(throughput)"
+		waitTimelabel.text  = "\(avgWaitingTime)"
+		if people-person <= 0 {
+			extraPeopleLbl.text = ""
+		}
+		else{
+			extraPeopleLbl.text = "+\(people-person)"
+		}
+		
 	}
 	
 }
