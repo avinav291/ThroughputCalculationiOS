@@ -48,11 +48,12 @@ class AnimatedQueueDisplayViewController: UIViewController {
 		skView.presentScene(scene)
 		
 //		self.updateSKScene()
+		self.getDetails()
     }
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)
-		self.getDetails()
+//		self.getDetails()
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {

@@ -11,11 +11,11 @@ import SpriteKit
 
 class MyScene: SKScene
 {
-    let sheet = CapGuy()
+//    let sheet = CapGuy()
 //	let sheet = walking_business_man()
 //    var sequence: SKAction?
 	var lineNodes:[[SKSpriteNode]]! = [[], [], [], [], []]
-	var walkAnim : SKAction!
+//	var walkAnim : SKAction!
 	var throughputLabel:[SKLabelNode] = [SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold")]
 	var avgWaitingTimeLabel:[SKLabelNode] = [SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold")]
 	var extraPeopleLabel:[SKLabelNode] = [SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold")]
@@ -39,13 +39,13 @@ class MyScene: SKScene
 //		view.backgroundColor = UIColor(patternImage: UIImage(named: "carpet")!)
 		
         // in the first animation CapGuy walks from left to right, in the second one he turns from right to left
-        let walk = SKAction.animate(with: sheet.capguy_walk(), timePerFrame: 0.033)
+//        let walk = SKAction.animate(with: sheet.capguy_walk(), timePerFrame: 0.033)
 //		let walk = SKAction.animate(with: sheet.walking_business_man(), timePerFrame: 0.033)
 //        let turn = SKAction.animate(with: sheet.capguy_turn(), timePerFrame: 0.033)
 
         // to walk over the complete iPad display, we have to repeat the animation
-        walkAnim = SKAction.repeat(walk, count: 6)
-        
+//        walkAnim = SKAction.repeat(walk, count: 6)
+		
         // we define two actions to move the sprite from left to right, and back;
 //        var moveRight = SKAction.moveTo(x: 900, duration: walkAnim.duration)
 //		let moveRight = SKAction.moveBy(x: 100, y: -100, duration: walkAnim.duration)
@@ -120,17 +120,18 @@ class MyScene: SKScene
 				}
 				
 				let sprite = SKSpriteNode(texture: SKTexture(imageNamed: "counter"))
-				sprite.size = CGSize(width: 150, height: 70)
-				sprite.position = CGPoint(x: CGFloat( 200.0*CGFloat(laneNumber) - 100.0), y: 700)
+				sprite.size = CGSize(width: 150, height: 100)
+				sprite.position = CGPoint(x: CGFloat( 200.0*CGFloat(laneNumber) - 100.0), y: 705)
 				addChild(sprite)
 				
 //				let waitTimelabel = self.avgWaitingTimeLabel[laneNumber]
 				
 //				addChild(waitTimelabel)
 				if waitTimelabel.parent == nil{
-					waitTimelabel.fontSize = 20.0
+					waitTimelabel.fontSize = 30.0
 					waitTimelabel.fontColor = UIColor.black
 					waitTimelabel.position = CGPoint(x: CGFloat( 200.0*CGFloat(laneNumber) - 100.0), y: 690)
+					waitTimelabel.zPosition = 2
 					addChild(waitTimelabel)
 				}
 				
@@ -177,7 +178,8 @@ class MyScene: SKScene
 		}
 		
 		label.text = "\(throughput)"
-		waitTimelabel.text  = "\(avgWaitingTime)"
+		waitTimelabel.text = "\(round(avgWaitingTime*1000)/1000)"
+//		waitTimelabel.text  = String(format:"%.5f",avgWaitingTime)
 		if people-person <= 0 {
 			extraPeopleLbl.text = ""
 		}
