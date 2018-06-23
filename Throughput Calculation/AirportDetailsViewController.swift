@@ -23,7 +23,7 @@ class AirportDetailsViewController: UIViewController {
 	
 	let defaults = UserDefaults.standard
 	
-	var ref = FIRDatabase.database().reference()
+	var ref = Database.database().reference()
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)

@@ -55,7 +55,7 @@ class MapViewController: UIViewController {
 	//Travel Modes
 	var travelMode = TravelModes.driving
 	
-	var ref = FIRDatabase.database().reference()
+	var ref = Database.database().reference()
 	
 	//Minimum Average Time
 	var minAvgTime:Double = 0.0

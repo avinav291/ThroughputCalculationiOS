@@ -43,7 +43,7 @@ class BoardingDetailsViewController: UIViewController {
 	
 	var snowView: SnowView!
 	
-	var ref = FIRDatabase.database().reference()
+	var ref = Database.database().reference()
 	
 	var airportName:String!
 	var carrierName:String!

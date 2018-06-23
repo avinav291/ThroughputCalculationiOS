@@ -40,6 +40,7 @@
 		2EA426FA1E850F810002AF43 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA426F91E850F810002AF43 /* Counter.swift */; };
 		2EA426FC1E8511450002AF43 /* CarrierTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA426FB1E8511450002AF43 /* CarrierTabBarController.swift */; };
 		2EA426FE1E851B5B0002AF43 /* MKLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA426FD1E851B5B0002AF43 /* MKLabel.swift */; };
+		2EAE005720DD697200E07BB6 /* MKCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAE005620DD697200E07BB6 /* MKCardView.swift */; };
 		2ECF76F11E8A253A00288B20 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECF76F01E8A253A00288B20 /* DashboardViewController.swift */; };
 		2ED926881E97DF2A00BC2543 /* GoogleMapsBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ED926871E97DF2A00BC2543 /* GoogleMapsBase.framework */; };
 		2ED9268B1E97DF3700BC2543 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ED926891E97DF3700BC2543 /* GoogleMaps.framework */; };
@@ -89,6 +90,7 @@
 		2EA426F91E850F810002AF43 /* Counter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		2EA426FB1E8511450002AF43 /* CarrierTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarrierTabBarController.swift; sourceTree = "<group>"; };
 		2EA426FD1E851B5B0002AF43 /* MKLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MKLabel.swift; path = ../MKLabel.swift; sourceTree = "<group>"; };
+		2EAE005620DD697200E07BB6 /* MKCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKCardView.swift; sourceTree = "<group>"; };
 		2ECF76F01E8A253A00288B20 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		2ED926871E97DF2A00BC2543 /* GoogleMapsBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMapsBase.framework; sourceTree = "<group>"; };
 		2ED926891E97DF3700BC2543 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 		2E2817341E845C3B00069BCA /* Material Kit */ = {
 			isa = PBXGroup;
 			children = (
+				2EAE005620DD697200E07BB6 /* MKCardView.swift */,
 				2EA426FD1E851B5B0002AF43 /* MKLabel.swift */,
 				2E28172C1E845BF600069BCA /* MKButton.swift */,
 				2E28172D1E845BF600069BCA /* MKLayer.swift */,
@@ -274,7 +277,6 @@
 				2E2959A81E82F0BC0083141A /* Frameworks */,
 				2E2959A91E82F0BC0083141A /* Resources */,
 				706284CF501689B3CFD37C06 /* [CP] Embed Pods Frameworks */,
-				41E75276A9FCB60E876A4A40 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -338,34 +340,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		41E75276A9FCB60E876A4A40 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Throughput Calculation/Pods-Throughput Calculation-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		5294329D1532694F4BE28D5A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Throughput Calculation-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		706284CF501689B3CFD37C06 /* [CP] Embed Pods Frameworks */ = {
@@ -374,9 +364,18 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Throughput Calculation/Pods-Throughput Calculation-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -402,6 +401,7 @@
 				2E2817301E845BF600069BCA /* MKLayer.swift in Sources */,
 				2E28172F1E845BF600069BCA /* MKButton.swift in Sources */,
 				2EA426FE1E851B5B0002AF43 /* MKLabel.swift in Sources */,
+				2EAE005720DD697200E07BB6 /* MKCardView.swift in Sources */,
 				2E2817311E845BF600069BCA /* MKTextField.swift in Sources */,
 				2EA426FC1E8511450002AF43 /* CarrierTabBarController.swift in Sources */,
 				2E28173C1E84F58B00069BCA /* BoardView.swift in Sources */,
@@ -544,7 +544,7 @@
 					"$(PROJECT_DIR)/Throughput\\ Calculation",
 				);
 				INFOPLIST_FILE = "Throughput Calculation/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -577,7 +577,7 @@
 					"$(PROJECT_DIR)/Throughput\\ Calculation",
 				);
 				INFOPLIST_FILE = "Throughput Calculation/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-ObjC",

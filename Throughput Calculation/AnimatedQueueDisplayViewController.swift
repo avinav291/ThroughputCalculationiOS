@@ -23,7 +23,7 @@ class AnimatedQueueDisplayViewController: UIViewController {
 	
 	var minCounter:Int! = 0
 	
-	var ref = FIRDatabase.database().reference()
+	var ref = Database.database().reference()
 
     override func viewDidLoad() {
         super.viewDidLoad()

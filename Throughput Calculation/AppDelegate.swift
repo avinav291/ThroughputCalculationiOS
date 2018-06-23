@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	
 	override init(){
 		super.init()
-		FIRApp.configure()
+		FirebaseApp.configure()
 	}
 	
 //	var ref = FIRDatabase.database().reference()
