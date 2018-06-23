@@ -18,6 +18,8 @@ enum TravelModes: Int {
 class MapViewController: UIViewController {
 
 	@IBOutlet weak var viewMap: GMSMapView!
+	@IBOutlet weak var bottomCardView: MKCardView!
+	@IBOutlet weak var statusBannerIV: UIImageView!
 	
 	@IBOutlet weak var bbFindAddress: UIBarButtonItem!
 	
@@ -68,6 +70,8 @@ class MapViewController: UIViewController {
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)
+		
+		self.viewMap.padding = UIEdgeInsets(top: self.statusBannerIV.center.y+self.statusBannerIV.bounds.height, left: 0, bottom: self.bottomCardView.bounds.height+10, right: 0)
 		
 		self.viewMap.layer.cornerRadius = 1
 		self.viewMap.layer.shadowOpacity = 1
@@ -399,10 +403,7 @@ class MapViewController: UIViewController {
 			totalDuration.append("\(remainingHours) h ")
 		}
 		if remainingMins > 0{
-			totalDuration.append("\(remainingMins) mins ")
-		}
-		if remainingSecs > 0{
-			totalDuration.append("\(remainingSecs) s")
+			totalDuration.append("\(remainingMins) m ")
 		}
 		
 //		let totalDuration = "\(days) d, \(remainingHours) h, \(remainingMins) mins, \(remainingSecs) secs"

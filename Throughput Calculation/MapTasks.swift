@@ -50,7 +50,7 @@ class MapTasks: NSObject {
 	
 	func geocodeAddress(address: String!, withCompletionHandler completionHandler: @escaping ((_ status: String, _ success: Bool) -> Void)) {
 		if let lookupAddress = address {
-			var geocodeURLString = baseURLGeocode+"key=AIzaSyBEKol7xcHOlnhlvNJe9xdwokI8PErEqtA&" + "address=" + lookupAddress
+			var geocodeURLString = baseURLGeocode+"key=AIzaSyB3_9SBQ6km_XsjBwIAblBMhVslognXNdY&" + "address=" + lookupAddress
 			geocodeURLString = geocodeURLString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
 			
 			DispatchQueue.main.async {
@@ -91,7 +91,7 @@ class MapTasks: NSObject {
 	func getDirections(origin: String!, destination: String!, waypoints: Array<String>!, travelMode: TravelModes!, completionHandler: @escaping ((_ status: String, _ success: Bool) -> Void)) {
 		if let originLocation = origin {
 			if let destinationLocation = destination {
-				var directionsURLString = baseURLDirections + "key=AIzaSyBEKol7xcHOlnhlvNJe9xdwokI8PErEqtA&" + "origin=" + originLocation + "&destination=" + destinationLocation
+				var directionsURLString = baseURLDirections + "key=AIzaSyB3_9SBQ6km_XsjBwIAblBMhVslognXNdY&" + "origin=" + originLocation + "&destination=" + destinationLocation
 				
 				if (travelMode) != nil {
 					var travelModeString = ""
