@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	override init(){
 		super.init()
 		FirebaseApp.configure()
+		Database.database().isPersistenceEnabled = true
 	}
 	
 //	var ref = FIRDatabase.database().reference()

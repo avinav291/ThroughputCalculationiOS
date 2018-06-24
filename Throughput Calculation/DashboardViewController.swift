@@ -68,12 +68,6 @@ class DashboardViewController: UIViewController, CAAnimationDelegate {
 	
 	var ref:DatabaseReference!
 
-	convenience init() {
-		self.init()
-		Database.database().isPersistenceEnabled = true
-		ref = Database.database().reference()
-	}
-
     override func viewDidLoad() {
         super.viewDidLoad()
 		
@@ -176,23 +170,34 @@ class DashboardViewController: UIViewController, CAAnimationDelegate {
 					
 					//TODO:- Get the flight No
 				}
-				self.airportDropDown.dataSource = Array(self.airports.keys)
-				self.airportButton.setTitle(self.airports.keys.first, for: .normal)
-				if let carriers = self.airports[(self.airportButton.title(for: .normal))!]{
-					self.carrierDropDown.dataSource =  Array(carriers.keys)
-					self.flightNoDropDown.dataSource = []
-					self.carrierButton.setTitle(carriers.keys.first, for: .normal)
-					
+				
+				
+				if self.airportDropDown.dataSource.isEmpty{
+					self.airportDropDown.dataSource = Array(self.airports.keys)
+					self.fillDropDownAndUpdate()
 				}
-				if let flights = self.airports[(self.airportButton.title(for: .normal))!]?[(self.carrierButton.title(for: .normal)!)]{
-					self.flightNoDropDown.dataSource = Array(flights)
-					self.flightNoButton.setTitle(flights.first, for: .normal)
-					self.goButton.isEnabled = true
+				else{
+					self.airportDropDown.dataSource = Array(self.airports.keys)
 				}
+				
 			}
 		})
 	}
 	
+	func fillDropDownAndUpdate(){
+		self.airportButton.setTitle(self.airports.keys.first, for: .normal)
+		if let carriers = self.airports[(self.airportButton.title(for: .normal))!]{
+			self.carrierDropDown.dataSource =  Array(carriers.keys)
+			self.flightNoDropDown.dataSource = []
+			self.carrierButton.setTitle(carriers.keys.first, for: .normal)
+			
+		}
+		if let flights = self.airports[(self.airportButton.title(for: .normal))!]?[(self.carrierButton.title(for: .normal)!)]{
+			self.flightNoDropDown.dataSource = Array(flights)
+			self.flightNoButton.setTitle(flights.first, for: .normal)
+			self.goButton.isEnabled = true
+		}
+	}
 	
 	@IBAction func goButtonPressed() {
 		

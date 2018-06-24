@@ -271,7 +271,7 @@ class BoardingDetailsViewController: UIViewController {
 			})
 			
 			UIView.addKeyframe(withRelativeStartTime: 0.1, relativeDuration: 0.4) {
-				self.planeImage.transform = CGAffineTransform(rotationAngle: CGFloat(-M_PI_4/2))
+				self.planeImage.transform = CGAffineTransform(rotationAngle: CGFloat(-Double.pi/8))
 			}
 			
 			UIView.addKeyframe(withRelativeStartTime: 0.25, relativeDuration: 0.25) {

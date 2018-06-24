@@ -9,5 +9,7 @@ target 'Throughput Calculation' do
   pod 'Firebase/Core'
   pod  'Firebase/Database'
   pod 'DropDown'
+  pod 'GoogleMaps'
+  pod 'GooglePlaces'
 
 end

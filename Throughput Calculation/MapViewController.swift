@@ -379,7 +379,7 @@ class MapViewController: UIViewController {
 		let days = hours / 24
 		let remainingHours = hours % 24
 		let remainingMins = mins % 60
-		let remainingSecs = totalTime % 60
+//		let remainingSecs = totalTime % 60
 		
 		if self.isStatusDistanceBased{
 			let timeInterval = self.arrivalTime.timeIntervalSince1970 - Double(totalTime)

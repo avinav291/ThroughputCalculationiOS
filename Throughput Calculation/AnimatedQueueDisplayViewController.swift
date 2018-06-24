@@ -89,77 +89,9 @@ class AnimatedQueueDisplayViewController: UIViewController {
 		})
 	}
 	
-//	func getSmallestThroughputDetails(){
-//		ref.child("\(self.airportName!)/\(self.carrierName!)/carrier").observe(.value, with: { (snapshot) in
-//			//			print(snapshot.value!)
-//			if let snap = snapshot.value as? NSArray{
-//				//				print(snap)
-//				var minAvgTime = Double.infinity
-//				for lane in snap{
-//					if let counter = lane as? [String:Any]{
-//						let counterTime:Double = Double(counter["avgWaitingTime"] as! String)!
-//						if minAvgTime > counterTime{
-//							minAvgTime = counterTime
-//							self.minCounter = Int(counter["counterNumber"] as! String)!
-//						}
-//					}
-//				}
-//				self.displayRouteInfo()
-//			}
-//		})
-//	}
-//	
-//	func getDetails(){
-//		let airportName = self.airportName
-//		let carrierName = self.carrierName
-//		
-//		if airportName != "" && carrierName != ""{
-//			
-//			let ipAddress = defaults.string(forKey: "ipAddress")
-//			
-//			let url = URL(string: "http://\(ipAddress!)/api/sendQueueData")
-//			let postString = "airportName=\(airportName!)&carrierName=\(carrierName!)"
-//			let request = NSMutableURLRequest(url: url!)
-//			request.httpMethod = "POST"
-//			request.httpBody = postString.data(using: .utf8)
-//			
-//			let task = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) in
-//				if error != nil {
-//					print(error!)
-//					return
-//				}
-//				do{
-//					
-//					let responseJson = try JSONSerialization.jsonObject(with: data!, options: .allowFragments)
-//					
-//					if let json = responseJson as? [[String:Any]]{
-//						
-//						self.counters = []
-//						for counter in json{
-//							self.counters.append(Counter(throughput: counter["throughput"] as! Int, counterNumber: counter["counterNumber"] as! Int, counterCount: counter["counterCount"] as! Int))
-//						}
-//						self.updateSKScene()
-//						DispatchQueue.main.async {
-//							Timer.scheduledTimer(timeInterval: 15.0, target: self, selector: #selector(self.getDetails), userInfo: nil, repeats: false)
-//						}
-//					}
-//					
-//					
-//				}
-//				catch{
-//					print("Json Receiving error")
-//				}
-//			})
-//			
-//			task.resume()
-//		}
-//	}
-	
 	func updateSKScene(){
 		for counter in self.counters{
-//			let laneNumber = counter.counterNumber
-//			let people = counter.counterCount
-//			
+
 			self.scene.updateNodesToLine(laneNumber: counter.counterNumber, people: counter.counterCount, throughput: counter.throughput, avgWaitingTime: counter.avgWaitingTime)
 		}
 	}
