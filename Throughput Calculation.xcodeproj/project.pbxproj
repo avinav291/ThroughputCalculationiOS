@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E0E986320DF41E40039EB5E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E0E986220DF41E40039EB5E /* Images.xcassets */; };
 		2E2817291E844BCD00069BCA /* QueueDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2817281E844BCD00069BCA /* QueueDisplayViewController.swift */; };
 		2E28172B1E845AF700069BCA /* AirportDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E28172A1E845AF700069BCA /* AirportDetailsViewController.swift */; };
 		2E28172F1E845BF600069BCA /* MKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E28172C1E845BF600069BCA /* MKButton.swift */; };
@@ -18,7 +19,6 @@
 		2E2959AF1E82F0BC0083141A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2959AE1E82F0BC0083141A /* AppDelegate.swift */; };
 		2E2959B11E82F0BC0083141A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2959B01E82F0BC0083141A /* MapViewController.swift */; };
 		2E2959B41E82F0BD0083141A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E2959B21E82F0BD0083141A /* Main.storyboard */; };
-		2E2959B61E82F0BD0083141A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E2959B51E82F0BD0083141A /* Images.xcassets */; };
 		2E2959B91E82F0BD0083141A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E2959B71E82F0BD0083141A /* LaunchScreen.storyboard */; };
 		2E2959CD1E82F4200083141A /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E2959CC1E82F4200083141A /* Accelerate.framework */; };
 		2E2959CF1E82F4290083141A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E2959CE1E82F4290083141A /* CoreData.framework */; };
@@ -54,6 +54,7 @@
 
 /* Begin PBXFileReference section */
 		26D4FDC61FC80FBF2E814719 /* Pods_Throughput_Calculation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Throughput_Calculation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E0E986220DF41E40039EB5E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Throughput Calculation/Images.xcassets"; sourceTree = "<group>"; };
 		2E2817281E844BCD00069BCA /* QueueDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueDisplayViewController.swift; sourceTree = "<group>"; };
 		2E28172A1E845AF700069BCA /* AirportDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportDetailsViewController.swift; sourceTree = "<group>"; };
 		2E28172C1E845BF600069BCA /* MKButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKButton.swift; sourceTree = "<group>"; };
@@ -66,7 +67,6 @@
 		2E2959AE1E82F0BC0083141A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2E2959B01E82F0BC0083141A /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		2E2959B31E82F0BD0083141A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		2E2959B51E82F0BD0083141A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2E2959B81E82F0BD0083141A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2E2959BA1E82F0BD0083141A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E2959CC1E82F4200083141A /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
@@ -156,6 +156,7 @@
 		2E2959A21E82F0BC0083141A = {
 			isa = PBXGroup;
 			children = (
+				2E0E986220DF41E40039EB5E /* Images.xcassets */,
 				2E2959AD1E82F0BC0083141A /* Throughput Calculation */,
 				2E2959AC1E82F0BC0083141A /* Products */,
 				2E2959CB1E82F4200083141A /* Frameworks */,
@@ -176,7 +177,6 @@
 			isa = PBXGroup;
 			children = (
 				2EA79E1A1E97DC0200B9467E /* Google Maps */,
-				2E2959B51E82F0BD0083141A /* Images.xcassets */,
 				2E3553051E895AD900012ACC /* Custom Classes */,
 				2E3553041E895AB300012ACC /* View Controllers */,
 				2EE5FE131E87B8E300470A97 /* SpriteKit Utlities */,
@@ -330,8 +330,8 @@
 			files = (
 				2E28173A1E84F3E400069BCA /* BoardView.xib in Resources */,
 				2E2959B91E82F0BD0083141A /* LaunchScreen.storyboard in Resources */,
-				2E2959B61E82F0BD0083141A /* Images.xcassets in Resources */,
 				2ED9268E1E97DF4F00BC2543 /* GoogleMaps.bundle in Resources */,
+				2E0E986320DF41E40039EB5E /* Images.xcassets in Resources */,
 				2EEC3BC91E8954A600DFCF2C /* GoogleService-Info.plist in Resources */,
 				2E2959B41E82F0BD0083141A /* Main.storyboard in Resources */,
 			);

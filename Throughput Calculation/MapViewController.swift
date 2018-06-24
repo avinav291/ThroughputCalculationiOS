@@ -142,10 +142,10 @@ class MapViewController: UIViewController {
 				self.minAvgTime = Double.infinity
 				for lane in snap{
 					if let counter = lane as? [String:Any]{
-						let counterTime:Double = Double(counter["avgWaitingTime"] as! String)!
+						let counterTime:Double = (counter["throughput"] as? Double ?? 1.0)*(counter["counterCount"] as? Double ?? 1.0)
 						if self.minAvgTime > counterTime{
 							self.minAvgTime = counterTime
-							self.minCounter = Int(counter["counterNumber"] as! String)!
+							self.minCounter = counter["counterNumber"] as? Int ?? 0
 						}
 					}
 				}

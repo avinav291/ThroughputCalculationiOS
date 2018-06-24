@@ -75,11 +75,11 @@ class AnimatedQueueDisplayViewController: UIViewController {
 				var minAvgTime = Double.infinity
 				for lane in snap{
 					if let counter = lane as? [String:Any]{
-						self.counters.append(Counter(throughput: Double(counter["throughput"] as! String)!, counterNumber: Int(counter["counterNumber"] as! String)!, counterCount: Int(counter["counterCount"] as! String)!, avgWaitingTime: Double(counter["avgWaitingTime"] as! String)!))
-						let counterTime:Double = Double(counter["avgWaitingTime"] as! String)!
+						self.counters.append(Counter(throughput: counter["throughput"] as? Double ?? 0.0, counterNumber: counter["counterNumber"] as? Int ?? 0, counterCount: counter["counterCount"] as? Int ?? 0, avgWaitingTime: (counter["throughput"] as? Double ?? 1.0)*(counter["counterCount"] as? Double ?? 1.0)))
+						let counterTime:Double = (counter["throughput"] as? Double ?? 1.0)*(counter["counterCount"] as? Double ?? 1.0)
 						if minAvgTime > counterTime{
 							minAvgTime = counterTime
-							self.minCounter = Int(counter["counterNumber"] as! String)!
+							self.minCounter = counter["counterNumber"] as? Int ?? 0
 						}
 					}
 				}

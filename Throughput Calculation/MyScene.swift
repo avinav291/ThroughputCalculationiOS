@@ -177,8 +177,8 @@ class MyScene: SKScene
 			}
 		}
 		
-		label.text = "\(throughput)"
-		waitTimelabel.text = "\(round(avgWaitingTime*1000)/1000)"
+		label.text = "\(round(throughput*100)/100)"
+		waitTimelabel.text = "\(round(avgWaitingTime*100)/100)"
 //		waitTimelabel.text  = String(format:"%.5f",avgWaitingTime)
 		if people-person <= 0 {
 			extraPeopleLbl.text = ""
