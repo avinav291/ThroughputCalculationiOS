@@ -178,6 +178,7 @@ class DashboardViewController: UIViewController, CAAnimationDelegate {
 				}
 				else{
 					self.airportDropDown.dataSource = Array(self.airports.keys)
+					self.goButton.isEnabled = true
 				}
 				
 			}

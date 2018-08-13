@@ -17,7 +17,7 @@ class MyScene: SKScene
 	var lineNodes:[[SKSpriteNode]]! = [[], [], [], [], []]
 //	var walkAnim : SKAction!
 	var throughputLabel:[SKLabelNode] = [SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold")]
-	var avgWaitingTimeLabel:[SKLabelNode] = [SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold")]
+//	var avgWaitingTimeLabel:[SKLabelNode] = [SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold")]
 	var extraPeopleLabel:[SKLabelNode] = [SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold"), SKLabelNode(fontNamed: "AvenirNext-Bold")]
     
     override func didMove(to view: SKView) {
@@ -88,7 +88,7 @@ class MyScene: SKScene
 		}
 		
 		let label = self.throughputLabel[laneNumber]
-		let waitTimelabel = self.avgWaitingTimeLabel[laneNumber]
+//		let waitTimelabel = self.avgWaitingTimeLabel[laneNumber]
 		let extraPeopleLbl = self.extraPeopleLabel[laneNumber]
 //		let mirrorDirection = SKAction.scaleX(to: -1, y:1, duration:0.0)
 		
@@ -99,10 +99,10 @@ class MyScene: SKScene
 				//Add the Counter
 				
 				//Image
-				let clock = SKSpriteNode(texture: SKTexture(imageNamed: "clock"))
-				clock.size = CGSize(width: 100, height: 100)
-				clock.position = CGPoint(x: CGFloat( 200.0*CGFloat(laneNumber) - 100.0), y: 800)
-				addChild(clock)
+//				let clock = SKSpriteNode(texture: SKTexture(imageNamed: "clock"))
+//				clock.size = CGSize(width: 100, height: 100)
+//				clock.position = CGPoint(x: CGFloat( 200.0*CGFloat(laneNumber) - 100.0), y: 825)
+//				addChild(clock)
 				
 				//Image
 //				let label = self.throughputLabel[laneNumber]
@@ -120,20 +120,20 @@ class MyScene: SKScene
 				}
 				
 				let sprite = SKSpriteNode(texture: SKTexture(imageNamed: "counter"))
-				sprite.size = CGSize(width: 150, height: 100)
+				sprite.size = CGSize(width: 125, height: 125)
 				sprite.position = CGPoint(x: CGFloat( 200.0*CGFloat(laneNumber) - 100.0), y: 705)
 				addChild(sprite)
 				
 //				let waitTimelabel = self.avgWaitingTimeLabel[laneNumber]
 				
 //				addChild(waitTimelabel)
-				if waitTimelabel.parent == nil{
-					waitTimelabel.fontSize = 30.0
-					waitTimelabel.fontColor = UIColor.black
-					waitTimelabel.position = CGPoint(x: CGFloat( 200.0*CGFloat(laneNumber) - 100.0), y: 690)
-					waitTimelabel.zPosition = 2
-					addChild(waitTimelabel)
-				}
+//				if waitTimelabel.parent == nil{
+//					waitTimelabel.fontSize = 30.0
+//					waitTimelabel.fontColor = UIColor.black
+//					waitTimelabel.position = CGPoint(x: CGFloat( 200.0*CGFloat(laneNumber) - 100.0), y: 690)
+//					waitTimelabel.zPosition = 2
+//					addChild(waitTimelabel)
+//				}
 				
 //				let extraPeopleLbl = self.extraPeopleLabel[laneNumber]
 				
@@ -151,7 +151,7 @@ class MyScene: SKScene
 			for index in (self.lineNodes[laneNumber].count+1)...person{
 
 				let sprite = SKSpriteNode(texture: SKTexture(imageNamed: "person"))
-				sprite.size = CGSize(width: 50, height: 50)
+				sprite.size = CGSize(width: 75, height: 75)
 //				let sprite = SKSpriteNode(texture: sheet.frame_0_delay_0_04s())
 				sprite.position = CGPoint(x: CGFloat(200.0*CGFloat(laneNumber) - 100.0), y: 40)
 				let moveLeft = SKAction.moveBy(x: 0, y: CGFloat(600.0-60*Double(index)), duration:0.5 )
@@ -177,8 +177,8 @@ class MyScene: SKScene
 			}
 		}
 		
-		label.text = "\(round(throughput*100)/100)"
-		waitTimelabel.text = "\(round(avgWaitingTime*100)/100)"
+		label.text = "\(round(avgWaitingTime*100)/100)s"
+//		waitTimelabel.text = "\(round(avgWaitingTime*100)/100)s"
 //		waitTimelabel.text  = String(format:"%.5f",avgWaitingTime)
 		if people-person <= 0 {
 			extraPeopleLbl.text = ""

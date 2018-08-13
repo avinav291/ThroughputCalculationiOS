@@ -355,6 +355,7 @@ class MapViewController: UIViewController {
 		
 		let path: GMSPath = GMSPath(fromEncodedPath: route)!
 		routePolyline = GMSPolyline(path: path)
+		routePolyline.strokeWidth = 3
 		routePolyline.map = viewMap
 		
 		let coordibateBounds = GMSCoordinateBounds(path: path)
@@ -365,7 +366,7 @@ class MapViewController: UIViewController {
 		
 		self.distanceLabel.text = "\(self.appDelegate.mapTasks.totalDistanceInMeters/1000) km"
 		
-		if self.appDelegate.mapTasks.totalDistanceInMeters<100{
+		if self.appDelegate.mapTasks.totalDistanceInMeters<5000{
 			self.isStatusDistanceBased = false
 		}
 		else{
